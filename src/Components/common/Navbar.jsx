@@ -39,10 +39,13 @@ const Navbar = () => {
             }}
           >
             {/* Logo */}
-            <a href="#" className="text-xl font-black tracking-tight flex-shrink-0">
-              <span className="text-[#C61407]">Brands</span>
-              <span className="text-black">Way</span>
-            </a>
+            <div className="flex flex-col flex-shrink-0">
+              <a href="#" className="text-xl font-black tracking-tight">
+                <span className="text-black">Brands</span>
+                <span className="text-[#C61407]">Way</span>
+              </a>
+              <p className="text-[10px] font-medium text-gray-600 leading-tight">PR & Marketing Agency</p>
+            </div>
 
             {/* Desktop nav links */}
             <div className="hidden md:flex items-center gap-7 text-[13px] font-medium text-gray-500">

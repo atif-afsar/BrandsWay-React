@@ -1,12 +1,12 @@
 import React from 'react'
 import Hero from '../Components/Home/Hero'
-import Marquee from '../Components/Home/Marquee'
+import ServicesSection from '../Components/Home/Services'
 
 const Home = () => {
   return (
     <div>
       <Hero />
-      {/* <Marquee /> */}
+      <ServicesSection/>
     </div>
   )
 }
