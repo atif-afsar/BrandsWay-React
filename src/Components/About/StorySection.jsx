@@ -19,7 +19,7 @@ export default function StorySection() {
 
           {/* Heading */}
           <h2 className="text-4xl md:text-5xl font-medium text-gray-900 leading-tight tracking-[-0.02em] mb-6">
-            Our Story
+            Our <span className="text-[#c61407]">Story</span>
           </h2>
 
           {/* Red underline */}

@@ -64,9 +64,9 @@ export default function CorePrinciples() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
-              className="text-4xl md:text-6xl font-bold text-gray-900 tracking-tighter"
+              className="text-4xl md:text-6xl font-bold text-gray-900 font-medium tracking-tighter"
             >
-              The DNA of Our <br /> <span className="text-gray-400">Success.</span>
+              The DNA of Our <br /> <span className="text-[#c61407]">Success.</span>
             </motion.h2>
           </div>
           

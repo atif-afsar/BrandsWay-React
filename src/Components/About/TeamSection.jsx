@@ -14,26 +14,22 @@ const team = [
   { name: "Isabella Cruz", role: "Digital Marketing Specialist", img: "/team/member9.png" },
   { name: "Kevin Zhang", role: "UX/UI Lead", img: "/team/member10.png" },
   { name: "Rachel Adams", role: "Account Executive", img: "/team/member11.png" },
-  { name: "Rachel Adams", role: "Account Executive", img: "/team/member12.png" },
+  { name: "Michael Ross", role: "Creative Director", img: "/team/member12.png" },
 ];
 
 export default function TeamSection() {
   const [page, setPage] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
-
-  // Responsive items per page logic
-  const getItemsPerPage = () => {
-    if (typeof window !== "undefined") {
-      if (window.innerWidth >= 1024) return 4;
-      if (window.innerWidth >= 640) return 2;
-    }
-    return 1;
-  };
-
   const [itemsPerPage, setItemsPerPage] = useState(4);
 
+  // Responsive logic updated for clean breakpoints
   useEffect(() => {
-    const handleResize = () => setItemsPerPage(getItemsPerPage());
+    const handleResize = () => {
+      if (window.innerWidth >= 1024) setItemsPerPage(4);
+      else if (window.innerWidth >= 768) setItemsPerPage(2);
+      else setItemsPerPage(1);
+    };
+
     handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
@@ -47,27 +43,32 @@ export default function TeamSection() {
 
   const prev = () => setPage((p) => (p - 1 + totalPages) % totalPages);
 
-  // Auto-swipe every 2 seconds unless hovered
+  // Auto-swipe engine (Every 2.5s)
   useEffect(() => {
     if (isHovered) return;
     const interval = setInterval(() => {
       next();
-    }, 2500); // 2.5s for a slightly smoother pace
+    }, 2500);
     return () => clearInterval(interval);
-  }, [next, isHovered]);
+  }, [next, isHovered, page]);
+
+  // Ensure page index doesn't go out of bounds when resizing
+  useEffect(() => {
+    if (page >= totalPages) setPage(0);
+  }, [itemsPerPage, totalPages, page]);
 
   const visible = team.slice(page * itemsPerPage, (page + 1) * itemsPerPage);
 
   return (
     <section 
-      className="bg-[#f8f9fa] py-24 px-6 md:px-16 overflow-hidden"
+      className="bg-[#f8f9fa] py-20 px-6 md:px-16 overflow-hidden"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
       <div className="max-w-7xl mx-auto">
         
-        {/* Premium Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
+        {/* Header */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 md:mb-16 gap-8 text-center md:text-left">
           <div className="max-w-xl">
             <motion.span 
               initial={{ opacity: 0 }}
@@ -76,44 +77,43 @@ export default function TeamSection() {
             >
               The Collective
             </motion.span>
-            <h2 className="text-4xl md:text-6xl font-bold text-gray-900 tracking-tighter leading-tight">
-              The Minds Behind <br /> <span className="text-gray-400">BrandsWay</span>
+            <h2 className="text-4xl md:text-6xl font-medium text-gray-900 tracking-tighter leading-tight">
+              The Minds Behind <br /> <span className="text-[#c61407]">BrandsWay</span>
             </h2>
           </div>
-          <p className="text-gray-500 max-w-sm text-lg font-light leading-relaxed">
-            A high-performance team of disruptors, creators, and strategists dedicated to your brand's evolution.
+          <p className="text-gray-500 max-w-sm text-lg font-light leading-relaxed mx-auto md:mx-0">
+            A high-performance team of disruptors and creators dedicated to your brand's evolution.
           </p>
         </div>
 
-        {/* Carousel Container */}
-        <div className="relative min-h-[480px]">
+        {/* Carousel */}
+        <div className="relative">
           <AnimatePresence mode="wait">
             <motion.div
               key={`${page}-${itemsPerPage}`}
-              initial={{ opacity: 0, x: 20 }}
+              initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -20 }}
-              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+              exit={{ opacity: 0, x: -30 }}
+              transition={{ duration: 0.6, ease: "circOut" }}
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8"
             >
-              {visible.map((member, i) => (
+              {visible.map((member) => (
                 <motion.div 
                     key={member.name} 
-                    whileHover={{ y: -8 }}
-                    className="group bg-white p-4 rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.03)] border border-gray-100 transition-all duration-500"
+                    whileHover={{ y: -10 }}
+                    className="group bg-white p-5 rounded-[2rem] shadow-sm border border-gray-100 transition-all duration-300"
                 >
-                  {/* Image with Red Accent Overlay */}
-                  <div className="relative rounded-[2rem] overflow-hidden aspect-[4/5]">
+                  <div className="relative rounded-[1.5rem] overflow-hidden aspect-[4/5] bg-gray-100">
                     <img
                       src={member.img}
                       alt={member.name}
-                      className="w-full h-full object-cover transition duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0"
+                      className="w-full h-full object-cover transition duration-500 group-hover:scale-105"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#C61407]/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    {/* Subtle red tint on hover only, no more gray default */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#C61407]/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   </div>
 
-                  {/* Text Content */}
-                  <div className="mt-6 px-2 pb-2 text-center">
+                  <div className="mt-6 px-1 text-center">
                     <h3 className="font-bold text-gray-900 text-xl tracking-tight leading-none">
                       {member.name}
                     </h3>
@@ -127,35 +127,37 @@ export default function TeamSection() {
           </AnimatePresence>
         </div>
 
-        {/* Sophisticated Controls */}
-        <div className="flex flex-col sm:flex-row items-center justify-between mt-20 gap-8">
-            {/* Dots with Page Progress */}
-            <div className="flex gap-3 order-2 sm:order-1">
+        {/* Controls */}
+        <div className="flex flex-col sm:flex-row items-center justify-between mt-12 md:mt-20 gap-8">
+            {/* Nav Buttons (Hidden on very small screens for cleaner mobile UI, or kept for accessibility) */}
+            <div className="flex gap-4 order-1">
+                <button
+                    onClick={prev}
+                    className="w-12 h-12 md:w-14 md:h-14 rounded-full border border-gray-200 flex items-center justify-center hover:bg-black hover:text-white transition-all"
+                    aria-label="Previous page"
+                >
+                    <ChevronLeft size={20} />
+                </button>
+                <button
+                    onClick={next}
+                    className="w-12 h-12 md:w-14 md:h-14 rounded-full border border-gray-200 flex items-center justify-center bg-white hover:bg-[#C61407] hover:border-[#C61407] hover:text-white transition-all shadow-sm"
+                    aria-label="Next page"
+                >
+                    <ChevronRight size={20} />
+                </button>
+            </div>
+
+            {/* Pagination Dots */}
+            <div className="flex gap-2.5 order-2">
                 {Array.from({ length: totalPages }).map((_, i) => (
                 <button
                     key={i}
                     onClick={() => setPage(i)}
                     className={`h-1.5 rounded-full transition-all duration-500 ${
-                    page === i ? "w-12 bg-[#C61407]" : "w-4 bg-gray-200 hover:bg-gray-400"
+                    page === i ? "w-10 bg-[#C61407]" : "w-3 bg-gray-200 hover:bg-gray-400"
                     }`}
                 />
                 ))}
-            </div>
-
-            {/* Nav Buttons */}
-            <div className="flex gap-4 order-1 sm:order-2">
-                <button
-                    onClick={prev}
-                    className="group w-14 h-14 rounded-full border border-gray-200 flex items-center justify-center hover:bg-black hover:border-black transition-all duration-300"
-                >
-                    <ChevronLeft className="group-hover:text-white transition-colors" />
-                </button>
-                <button
-                    onClick={next}
-                    className="group w-14 h-14 rounded-full border border-gray-200 flex items-center justify-center hover:bg-[#C61407] hover:border-[#C61407] transition-all duration-300"
-                >
-                    <ChevronRight className="group-hover:text-white transition-colors" />
-                </button>
             </div>
         </div>
       </div>
