@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const links = ['About Us', 'Our Work', 'Insights', 'Contact Us'];
+const links = ['Home', 'About Us', 'Our Work', 'Insights', 'Contact Us'];
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
@@ -39,25 +40,25 @@ const Navbar = () => {
             }}
           >
             {/* Logo */}
-            <div className="flex flex-col flex-shrink-0">
-              <a href="#" className="text-xl font-black tracking-tight">
+            <Link to="/" className="flex flex-col flex-shrink-0 text-xl font-black tracking-tight">
+              <div>
                 <span className="text-black">Brands</span>
                 <span className="text-[#C61407]">Way</span>
-              </a>
+              </div>
               <p className="text-[10px] font-medium text-gray-600 leading-tight">PR & Marketing Agency</p>
-            </div>
+            </Link>
 
             {/* Desktop nav links */}
             <div className="hidden md:flex items-center gap-7 text-[13px] font-medium text-gray-500">
               {links.map((link) => (
-                <a
+                <Link
                   key={link}
-                  href="#"
+                  to={`/${link.toLowerCase().replace(/\s+/g, '-')}`}
                   className="relative group transition-colors duration-200 hover:text-[#C61407]"
                 >
                   {link}
                   <span className="absolute -bottom-0.5 left-0 w-0 h-[1.5px] bg-[#C61407] rounded-full transition-all duration-300 group-hover:w-full" />
-                </a>
+                </Link>
               ))}
             </div>
 
@@ -119,20 +120,23 @@ const Navbar = () => {
             >
               <div className="flex flex-col px-6 py-5 gap-1">
                 {links.map((link, i) => (
-                  <motion.a
+                  <motion.div
                     key={link}
-                    href="#"
                     initial={{ opacity: 0, x: -12 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: i * 0.06, duration: 0.2 }}
                     onClick={() => setOpen(false)}
-                    className="flex items-center justify-between py-3 text-[15px] font-medium text-gray-700 hover:text-[#C61407] border-b border-gray-100 last:border-0 transition-colors group"
                   >
-                    {link}
-                    <svg className="w-4 h-4 text-gray-300 group-hover:text-[#C61407] transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-                    </svg>
-                  </motion.a>
+                    <Link
+                      to={`/${link.toLowerCase().replace(/\s+/g, '-')}`}
+                      className="flex items-center justify-between py-3 text-[15px] font-medium text-gray-700 hover:text-[#C61407] border-b border-gray-100 last:border-0 transition-colors group"
+                    >
+                      {link}
+                      <svg className="w-4 h-4 text-gray-300 group-hover:text-[#C61407] transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                      </svg>
+                    </Link>
+                  </motion.div>
                 ))}
 
                 {/* Mobile CTA */}

@@ -24,10 +24,32 @@ const CTASection = () => {
   };
 
   return (
-    <section className="relative w-full bg-white py-36 md:py-48 px-6 overflow-hidden">
+    <section className="relative w-full py-36 md:py-48 px-6 overflow-hidden">
+      {/* Background */}
+      <div className="absolute inset-0 z-0"
+        style={{
+          backgroundImage: 'url(/hero/bg2.jpg)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundAttachment: 'fixed'
+        }}
+      />
+      <div className="absolute inset-0 z-0"
+        style={{ backgroundColor: 'rgba(255,255,255,0.6)', mixBlendMode: 'lighten' }}
+      />
+      <div className="absolute inset-0 z-0 opacity-20"
+        style={{
+          backgroundImage: `linear-gradient(rgba(100,149,237,0.4) 1px, transparent 1px), linear-gradient(90deg, rgba(100,149,237,0.4) 1px, transparent 1px)`,
+          backgroundSize: '56px 56px',
+        }}
+      />
+      <div className="absolute inset-0 z-0 pointer-events-none"
+        style={{ background: 'linear-gradient(135deg, rgba(0,0,0,0.06) 0%, rgba(198,20,7,0.04) 100%)' }}
+      />
+
       {/* Subtle Background Accent (8% Opacity Radial Glow) */}
       <div 
-        className="absolute inset-0 pointer-events-none"
+        className="absolute inset-0 pointer-events-none z-0"
         style={{
           background: 'radial-gradient(circle at center, rgba(198, 20, 7, 0.08) 0%, transparent 70%)'
         }}
@@ -52,7 +74,7 @@ const CTASection = () => {
         {/* Subtext */}
         <motion.p 
           variants={itemVariants}
-          className="text-gray-500 text-lg md:text-xl font-light mb-12 max-w-xl mx-auto leading-relaxed"
+          className="text-gray-800 text-lg md:text-xl font-light mb-12 max-w-xl mx-auto leading-relaxed"
         >
           Let’s build a strategy tailored to your business goals.
         </motion.p>
