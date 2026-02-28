@@ -46,8 +46,8 @@ const AboutHero = () => {
           >
             Behind the 
             <span className="relative inline-block">
-              <span className="relative z-10 text-[#C61407]">Impact</span>
-              <span className="absolute -inset-1 blur-2xl bg-red-600/20 z-0"></span>
+              <span className="relative z-10 text-[#C61407]"> Impact</span>
+              {/* <span className="absolute -inset-1 blur-2xl bg-red-600/20 z-0"></span> */}
             </span>
           </motion.h1>
 
