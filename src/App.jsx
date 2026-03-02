@@ -11,7 +11,7 @@ import Navbar from './Components/common/Navbar'
 import Footer from './Components/common/Footer'
 import BrandsWayLoader from './Components/common/BrandsWayLoader'
 import ScrollToTop from './Components/common/ScrollToTop'
-import Cursor from './Components/common/Cursor'
+// import Cursor from './Components/common/Cursor'
 
 const App = () => {
   const [loading, setLoading] = useState(true)
@@ -22,7 +22,7 @@ const App = () => {
 
   return (
     <div className="bg-[#FAF9F6] min-h-screen">
-      <Cursor />
+      {/* <Cursor /> */}
       <AnimatePresence mode="wait">
         {loading && <BrandsWayLoader key="loader" onComplete={handleComplete} />}
       </AnimatePresence>

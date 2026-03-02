@@ -6,9 +6,9 @@ import work from "../../utils/WorkData";
 const categories = [
   "All",
   "Web Development",
-  "E-Commerce",
   "Brand Identity",
   "SEO",
+  "Content",
 ];
 
 export default function ProjectsSection() {
@@ -18,7 +18,11 @@ export default function ProjectsSection() {
   const filtered =
     active === "All"
       ? work
-      : work.filter((p) => p.category === active);
+      : work.filter((p) => {
+          // Support multiple categories separated by comma or "and"
+          const categories = p.category.split(/,|\s+and\s+|\s*&\s*/).map(c => c.trim());
+          return categories.some(cat => cat.toLowerCase().includes(active.toLowerCase()) || active.toLowerCase().includes(cat.toLowerCase()));
+        });
 
   return (
     <section className="bg-[#f3f4f6] py-24 px-6 md:px-16">
