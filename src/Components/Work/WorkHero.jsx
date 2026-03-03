@@ -36,7 +36,7 @@ const PortfolioHero = () => {
         >
           <motion.h1
             {...fadeInUp}
-            className="text-5xl md:text-7xl lg:text-8xl font-medium text-[#1a1c2e] tracking-tight leading-[1.1]"
+            className="text-5xl md:text-7xl lg:text-8xl mt-6 font-medium text-[#1a1c2e] tracking-tight leading-[1.1]"
           >
             Impact through <br />
             <motion.span 

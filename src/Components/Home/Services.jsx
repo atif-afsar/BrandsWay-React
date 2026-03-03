@@ -25,8 +25,8 @@ const ServiceCard = ({ service, index }) => {
       transition={{ duration: 0.5, delay: index * 0.06 }}
       whileHover={{ y: -8 }}
       className="relative shrink-0 rounded-3xl flex flex-col justify-between group cursor-pointer overflow-hidden
-                 w-full sm:w-[300px] md:w-[340px]
-                 h-auto min-h-[280px] sm:h-[420px] md:h-[460px]"
+                 w-full sm:w-[300px] md:w-[280px]
+                 h-auto min-h-[200px] sm:h-[420px] md:h-[380px]"
       style={{
         background: 'white',
         border: '1px solid rgba(0,0,0,0.07)',
@@ -50,7 +50,7 @@ const ServiceCard = ({ service, index }) => {
         {service.tag}
       </div>
 
-      <div className="relative z-10 p-6 sm:p-8 flex flex-col h-full justify-between gap-6 sm:gap-0">
+      <div className="relative z-10 p-5 sm:p-8 flex flex-col h-full justify-between gap-5 sm:gap-0">
         <div>
           {/* Icon */}
           <div
@@ -124,7 +124,7 @@ const DesktopSection = () => {
   const targetRef = useRef(null);
   const { scrollYProgress } = useScroll({ target: targetRef });
 
-  const CARD_WIDTH = 340 + 32;
+  const CARD_WIDTH = 280 + 32;
   const TOTAL_CARDS = services.length;
   const VISIBLE_CARDS = 3.3;
   const SCROLL_DISTANCE = CARD_WIDTH * (TOTAL_CARDS - VISIBLE_CARDS);
