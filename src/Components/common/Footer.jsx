@@ -70,23 +70,26 @@ const FooterSection = ({ title, links }) => {
 
 const Footer = () => {
   const services = [
-    { name: "Paid Acquisition", href: "#" },
-    { name: "Conversion Rate Opt.", href: "#" },
-    { name: "Brand Strategy", href: "#" },
-    { name: "SEO Dominance", href: "#" },
+    { name: "Digital Marketing", href: "#" },
+    { name: "Web Development", href: "#" },
+    { name: "Graphic Design", href: "#" },
+    { name: "Content Creation", href: "#" },
+    { name: "Social Media Strategy", href: "#" },
+
+   
+    
   ];
 
   const company = [
-    { name: "About Us", href: "#" },
-    { name: "Our Process", href: "#" },
-    { name: "Case Studies", href: "#" },
-    { name: "Careers", href: "#" },
+    { name: "About Us", href: "/about-us" },
+    { name: "Our Work", href: "/our-work" },
+    { name: "Insights", href: "/insights" },
+    { name: "Contact Us", href: "/contact-us" },
   ];
 
   const resources = [
-    { name: "Growth Blog", href: "#" },
-    { name: "Media Kit", href: "#" },
-    { name: "Help Center", href: "#" },
+    { name: "Growth Blogs", href: "/insights" },
+    { name: "Terms & Condition", href: "#" },
     { name: "Privacy Policy", href: "#" },
   ];
 
@@ -99,10 +102,9 @@ const Footer = () => {
 
           {/* BRAND COLUMN */}
           <div className="sm:col-span-2 lg:col-span-5 flex flex-col gap-4 pb-6 sm:pb-0 border-b border-white/5 sm:border-none">
-            <img src="/logo/brandsway.png" alt="BrandsWay" className="h-16 w-16 sm:h-20 sm:w-20" />
+            <img src="/logo/brandsway.png" alt="BrandsWay" className="h-24 w-24 " />
             <p className="text-gray-400 text-sm leading-relaxed max-w-sm">
-              Engineering high-performance growth engines for the next generation
-              of market-leading brands. Precision in every pixel.
+             We architect growth at scale — transforming ambitious brands into market leaders through precision strategy and pixel-perfect execution.
             </p>
 
             {/* Socials */}

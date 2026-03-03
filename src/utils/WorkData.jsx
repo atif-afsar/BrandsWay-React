@@ -9,7 +9,7 @@ const work = [
       "👨‍🏫 Instructor Dashboard: Powerful admin panel for course management, student analytics, and performance reports.",
       "📱 Responsive Design: Fully mobile-optimized with offline access capabilities and cross-platform compatibility."
     ],
-    description: "An intuitive learning management system built with modern web technologies to empower educators and learners.",
+    description: "An intuitive learning management system built with modern web technologies to empower education.",
     link: "https://learnlogix.in/",
     image: "/webProjects/learnlogix.png"
   },
@@ -35,7 +35,7 @@ const work = [
       "🔒 Secure & Seamless Experience: Features secure payment options, easy returns, and a smooth browsing experience that builds trust and accessibility.",
       "🎨 Engaging Visuals & Content: Includes colourful book covers, intuitive categories, and educational themes tailored for young readers and their guardians."
     ],
-    description: "Built with a clean orange-white-black themed UI, this publishing house website delivers professionalism, warmth and a child-friendly experience.",
+    description: "Built with a clean orange-white-black themed UI, this publishing house website delivers professionalism.",
     link: "https://unitypublishinghouse.org/",
     image: "/webProjects/unity.png"
   },

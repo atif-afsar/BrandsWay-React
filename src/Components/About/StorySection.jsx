@@ -59,7 +59,7 @@ export default function StorySection() {
           {/* Image */}
           <div className="rounded-2xl overflow-hidden shadow-xl">
             <img
-              src="/about/story.jpeg" // replace with your image
+              src="/about/story.jpg" // replace with your image
               alt="Team working together"
               className="w-full h-full object-cover"
             />
