@@ -6,12 +6,14 @@ import WhyChooseUs from '../Components/Home/WhyChooseUs'
 import FAQSection from '../Components/Home/FAQs'
 import CTASection from '../Components/Home/CTA'
 import ProcessSection from '../Components/Home/Process'
+import ScrollFillSection from './ScrollFillSection'
 
 const Home = () => {
   return (
     <div>
       <Hero />
       <ServicesSection/>
+      <ScrollFillSection />
       <ProcessSection />
       <ResultsSection />
       <WhyChooseUs />

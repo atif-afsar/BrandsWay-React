@@ -81,15 +81,35 @@ const Hero = () => {
       <div className="relative z-10 lg:hidden flex flex-col flex-1 px-5 sm:px-8 pt-24 pb-6 gap-8">
 
         {/* Badge */}
-        <motion.span
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-          className="inline-flex items-center gap-2 self-start bg-black text-white text-[10px] font-bold uppercase tracking-widest px-3.5 py-1.5 rounded-full"
-        >
-          <span className="w-1.5 h-1.5 rounded-full bg-[#C61407] animate-pulse" />
-          Available for new projects
-        </motion.span>
+       <motion.span
+  initial={{ opacity: 0, y: -10 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ delay: 0.2 }}
+  className="relative inline-flex items-center gap-2 mt-4 self-start 
+             bg-black text-white text-[10px] font-bold uppercase 
+             tracking-widest px-3.5 py-1.5 rounded-full"
+  style={{ isolation: 'isolate' }}
+>
+  {/* Animated rotating gradient border */}
+  <span 
+    className="absolute -inset-[1px] rounded-full animate-spin-slow"
+    style={{
+      background: 'conic-gradient(from 0deg, transparent 0%, white 10%, transparent 20%, transparent 100%)',
+      zIndex: -1
+    }}
+  />
+  
+  {/* Inner black background to create border effect */}
+  <span className="absolute inset-0 rounded-full bg-black" style={{ zIndex: 0 }} />
+
+  {/* Red pulse dot */}
+  <span className="w-1.5 h-1.5 rounded-full bg-[#C61407] animate-pulse relative z-10" />
+
+  {/* Text */}
+  <span className="relative z-10">
+    Available for new projects
+  </span>
+</motion.span>
 
         {/* Headline */}
         <motion.h1
@@ -177,7 +197,7 @@ const Hero = () => {
               transition={{ delay: 0.2 }}
               className="text-[11px] font-bold uppercase tracking-[0.3em] text-gray-600"
             >
-              Est. 2020
+              Est. 2024
             </motion.p>
 
             {/* Description */}

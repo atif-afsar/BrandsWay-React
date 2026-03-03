@@ -43,14 +43,21 @@ const Wrap = styled.div`
   gap: 0;
   position: relative;
   user-select: none;
+  width: 100%; /* Ensure wrap takes full width on mobile */
 `;
 
 const WordRow = styled.div`
   position: relative;
   display: flex;
   align-items: baseline;
+  justify-content: center; /* Center for mobile */
   gap: 0;
   height: 72px;
+
+  /* Mobile Fix: Adjust height for smaller font size */
+  @media (max-width: 768px) {
+    height: 50px;
+  }
 `;
 
 /* Sweep light overlay */
@@ -93,7 +100,7 @@ const Letter = styled.span`
   display: inline-block;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 700;
-  font-size: clamp(34px, 5.5vw, 56px);
+  font-size: clamp(34px, 12vw, 56px); /* Adjusted middle value for better mobile growth */
   letter-spacing: -0.02em;
   line-height: 1;
   z-index: 2;
@@ -119,11 +126,19 @@ const RedGlow = styled.div`
   border-radius: 50%;
   pointer-events: none;
   animation: ${glowPulse} 2.4s ease-in-out infinite;
+
+  /* Mobile Fix: Shrink glow to fit smaller text */
+  @media (max-width: 768px) {
+    width: 70px;
+    height: 40px;
+    right: 0;
+  }
 `;
 
 /* Hairline rule below wordmark */
 const Rule = styled.div`
-  width: 100%;
+  width: 80%; /* Shorter bar on mobile looks more premium */
+  max-width: 320px;
   height: 1px;
   background: linear-gradient(
     90deg,
@@ -136,6 +151,10 @@ const Rule = styled.div`
   box-shadow: 0 0 8px rgba(198,20,7,0.4);
   margin-top: 6px;
   animation: ${pulseBar} 2.4s ease-in-out infinite;
+
+  @media (min-width: 769px) {
+     width: 100%;
+  }
 `;
 
 /* Tagline */
@@ -146,13 +165,15 @@ const tagAnim = keyframes`
 
 const Tagline = styled.p`
   font-family: "Helvetica Neue", sans-serif;
-  font-size: 10px;
+  font-size: clamp(8px, 2.5vw, 10px); /* Responsive font size */
   font-weight: 600;
   color: white;
   letter-spacing: 0.28em;
   text-transform: uppercase;
   margin-top: 14px;
   animation: ${tagAnim} 2.4s ease-in-out infinite;
+  text-align: center;
+  white-space: nowrap;
 `;
 
 /* ── Wrapper with dark bg ───────────────────── */
@@ -176,7 +197,7 @@ const StyledWrapper = styled.div`
     background-image:
       linear-gradient(rgba(255,255,255,0.012) 1px, transparent 1px),
       linear-gradient(90deg, rgba(255,255,255,0.012) 1px, transparent 1px);
-    background-size: 72px 72px;
+    background-size: clamp(40px, 10vw, 72px) clamp(40px, 10vw, 72px);
     pointer-events: none;
   }
 
@@ -198,7 +219,6 @@ const STEP = 0.11;
 
 export default function BrandsWayLoader({ onComplete }) {
   useEffect(() => {
-    // Loader displays for 3.5 seconds, then calls onComplete
     const timer = setTimeout(() => {
       onComplete();
     }, 1800);
@@ -210,7 +230,6 @@ export default function BrandsWayLoader({ onComplete }) {
     <StyledWrapper>
       <Wrap>
         <WordRow>
-          {/* "Brands" */}
           {BRANDS.map((l, i) => (
             <Letter
               key={`b${i}`}
@@ -221,7 +240,6 @@ export default function BrandsWayLoader({ onComplete }) {
             </Letter>
           ))}
 
-          {/* "Way" — crimson */}
           <RedGlow />
           {WAY.map((l, i) => (
             <Letter
@@ -233,8 +251,6 @@ export default function BrandsWayLoader({ onComplete }) {
               {l}
             </Letter>
           ))}
-
-          {/* Chromatic sweep overlay */}
           <Sweep />
         </WordRow>
 
