@@ -1,10 +1,9 @@
 import React, { useState, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight, Star, Clock, ChevronRight } from 'lucide-react';
+import { Star, Clock, ChevronRight } from 'lucide-react';
 import { blogPosts } from '../../utils/blogData';
 
-// Dynamic category generator
 const getCategories = () => {
   const uniqueCategories = [...new Set(blogPosts.map(post => post.category))];
   return ["All Articles", ...uniqueCategories.sort()];
@@ -20,159 +19,160 @@ const BlogPage = () => {
     : blogPosts.filter(post => post.category === activeCategory);
 
   return (
-    <div className="bg-[#050505] min-h-screen selection:bg-[#C61407] selection:text-white">
-      {/* Background Ambient Glow */}
-      <div className="fixed inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute -top-[10%] -left-[10%] w-[40%] h-[40%] bg-[#C61407]/5 blur-[120px] rounded-full" />
+    <div className="bg-[#050505] min-h-screen selection:bg-[#C61407] selection:text-white overflow-x-hidden">
+      {/* Background Layering */}
+      <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
+        <div className="absolute top-[-10%] -left-[10%] w-[70%] h-[70%] bg-[#C61407]/5 blur-[120px] rounded-full" />
+        <div className="absolute bottom-[-10%] -right-[10%] w-[50%] h-[50%] bg-[#C61407]/3 blur-[100px] rounded-full" />
+        <div className="absolute inset-0 opacity-[0.02] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
       </div>
 
-      <section className="max-w-7xl mx-auto px-6 py-24 relative z-10">
+      <section className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 py-20 md:py-32 relative z-10">
+        
         {/* Header Section */}
-        <div className="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-8">
-          <div>
-            <motion.span 
+        <header className="mb-12 md:mb-24 flex flex-col lg:flex-row lg:items-end justify-between gap-10">
+          <div className="max-w-2xl">
+            <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
-              className="text-[#C61407] text-xs font-bold uppercase tracking-[0.3em] mb-4 block"
+              className="flex items-center gap-3 mb-6"
             >
-              Our Journal
-            </motion.span>
+              <span className="w-8 h-[1px] bg-[#C61407]" />
+              <span className="text-[#C61407] text-[10px] font-black uppercase tracking-[0.4em]">
+                Insight & Strategy
+              </span>
+            </motion.div>
             <motion.h1 
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              className="text-5xl md:text-7xl font-medium text-white tracking-tighter"
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              className="text-6xl sm:text-7xl md:text-8xl font-medium text-white tracking-tighter leading-[0.9]"
             >
-              Perspectives<span className="text-[#C61407]">.</span>
+              The <br className="hidden md:block" /> 
+              Journal<span className="text-[#C61407]">.</span>
             </motion.h1>
           </div>
 
-          {/* Filter Bar */}
+          {/* Filter Bar - Responsive Scrollable on Mobile */}
           <motion.div 
-            layout
-            className="flex flex-wrap gap-2 bg-white/5 p-1.5 backdrop-blur-xl rounded-full border border-white/10"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="flex flex-nowrap overflow-x-auto lg:flex-wrap gap-2 pb-4 lg:pb-0 scrollbar-hide no-scrollbar"
           >
             {categories.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
-                className={`px-5 py-2 rounded-full text-xs font-bold transition-all duration-500 uppercase tracking-wider ${
+                className={`whitespace-nowrap px-6 py-2.5 rounded-full text-[10px] font-bold transition-all duration-500 uppercase tracking-widest border ${
                   activeCategory === cat 
-                  ? "bg-[#C61407] text-white shadow-lg shadow-red-900/40" 
-                  : "text-gray-400 hover:text-white hover:bg-white/5"
+                  ? "bg-[#C61407] border-[#C61407] text-white shadow-[0_0_20px_rgba(198,20,7,0.3)]" 
+                  : "text-gray-500 border-white/10 hover:border-white/30 hover:text-white"
                 }`}
               >
                 {cat}
               </button>
             ))}
           </motion.div>
-        </div>
+        </header>
 
-        {/* Article Grid - Layout Prop handles smooth reflow when filtering */}
+        {/* Article Grid */}
         <motion.div 
           layout
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-x-8 gap-y-16"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-x-8 gap-y-20 md:gap-y-32"
         >
           <AnimatePresence mode='popLayout'>
             {filteredPosts.map((post, index) => {
-              // High-end agency logic: First post spans more space, others vary
               const isFeatured = index === 0 && activeCategory === "All Articles";
-              const colSpan = isFeatured ? "lg:col-span-8" : "lg:col-span-4";
-              const aspectRatio = isFeatured ? "aspect-[16/8]" : (index % 3 === 0 ? "aspect-[4/5]" : "aspect-square");
-
+              
+              // Responsive Grid Spans: Featured spans full width on mobile/tablet, 8 cols on desktop
+              const colSpan = isFeatured ? "lg:col-span-8 md:col-span-2" : "lg:col-span-4 md:col-span-1";
+              
               return (
                 <motion.article
                   layout
                   key={post.id}
-                  initial={{ opacity: 0, y: 40, scale: 0.96, filter: "blur(6px)" }}
-                  whileInView={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
-                  exit={{ opacity: 0, scale: 0.95, transition: { duration: 0.2 } }}
-                  viewport={{ once: true }}
-                  transition={{ 
-                    duration: 0.8, 
-                    ease: [0.23, 1, 0.32, 1],
-                    delay: index * 0.05 
-                  }}
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                   onClick={() => navigate(`/blog/${post.slug}`)}
-                  className={`flex flex-col group cursor-pointer relative ${colSpan}`}
+                  className={`group cursor-pointer flex flex-col ${colSpan}`}
                 >
-                  {/* Image Container */}
-                  <div className={`${aspectRatio} relative rounded-2xl overflow-hidden mb-8 bg-[#111] border border-white/5 group-hover:border-[#C61407]/30 transition-colors duration-700`}>
+                  {/* Image wrapper with high-end transition */}
+                  <div className={`relative w-full overflow-hidden rounded-3xl mb-8 bg-[#0a0a0a] border border-white/5 transition-all duration-700 
+                    ${isFeatured ? 'aspect-[16/10] md:aspect-[16/8]' : 'aspect-[4/5] md:aspect-square'}`}>
                     
-                    {/* Secondary Image Preview (Carousel Effect) */}
-                    {post.secondaryImage && (
-                      <img 
-                        src={post.secondaryImage} 
-                        className="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-1000 ease-in-out z-10" 
-                        alt="preview"
-                      />
-                    )}
-
                     <img 
                       src={post.image} 
                       alt={post.title} 
-                      className="w-full h-full object-cover grayscale-[0.4] group-hover:grayscale-0 group-hover:scale-110 transition-all duration-[1.2s] cubic-bezier(0.23, 1, 0.32, 1)" 
+                      className="w-full h-full object-cover scale-105 group-hover:scale-100 group-hover:grayscale-0 grayscale-[0.3] transition-all duration-[1.5s] ease-out" 
                     />
 
-                    {/* Premium Overlays */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-700" />
-                    <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
+                    {/* Glass Overlay on Hover */}
+                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-10" />
                     
-                    {/* Category Badge - Glass Effect */}
-                    <div className="absolute top-4 left-4 z-20">
-                      <span className="px-4 py-1.5 bg-black/40 backdrop-blur-md border border-white/10 text-[10px] text-white font-bold uppercase tracking-[0.2em] rounded-full">
+                    {/* Floating Info */}
+                    <div className="absolute top-6 left-6 z-20 flex gap-2">
+                      <span className="px-4 py-1.5 bg-black/60 backdrop-blur-xl border border-white/10 text-[9px] text-white font-black uppercase tracking-widest rounded-full">
                         {post.category}
                       </span>
                     </div>
 
-                    {/* Featured Star */}
                     {post.featured && (
-                      <div className="absolute top-4 right-4 z-20 text-[#C61407]">
-                        <Star size={18} fill="currentColor" />
+                      <div className="absolute top-6 right-6 z-20 text-[#C61407] drop-shadow-[0_0_10px_rgba(198,20,7,0.5)]">
+                        <Star size={20} fill="currentColor" />
                       </div>
                     )}
+
+                    {/* Read Post Button Reveal */}
+                    <div className="absolute inset-0 flex items-center justify-center z-20 translate-y-8 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 ease-out">
+                       <span className="bg-white text-black px-8 py-3 rounded-full text-[10px] font-black uppercase tracking-widest">
+                         Read Insight
+                       </span>
+                    </div>
                   </div>
 
-                  {/* Content Meta */}
-                  <div className="flex items-center gap-4 text-[#C61407] text-[10px] font-bold uppercase tracking-[0.2em] mb-4">
+                  {/* Metadata */}
+                  <div className="flex items-center gap-4 text-[#C61407] text-[10px] font-black uppercase tracking-[0.2em] mb-4">
                     <span>{post.date}</span>
                     <span className="w-1 h-1 bg-white/20 rounded-full" />
                     <div className="flex items-center gap-1.5">
-                      <Clock size={12} className="animate-pulse" />
+                      <Clock size={12} strokeWidth={3} />
                       <span>{post.readTime}</span>
                     </div>
                   </div>
 
-                  {/* Title with Underline Reveal */}
-                  <div className="relative overflow-hidden">
-                    <h3 className={`font-bold text-white leading-[1.1] mb-4 transition-transform duration-500 group-hover:-translate-y-1 ${isFeatured ? 'text-4xl md:text-5xl' : 'text-2xl'}`}>
-                      {post.title}
-                    </h3>
-                    <div className="h-[2px] w-full bg-[#C61407] origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out" />
-                  </div>
+                  {/* Title */}
+                  <h3 className={`font-bold text-white leading-[1.1] mb-5 group-hover:text-gray-300 transition-colors duration-300 
+                    ${isFeatured ? 'text-4xl md:text-5xl lg:text-6xl tracking-tighter' : 'text-2xl md:text-3xl tracking-tight'}`}>
+                    {post.title}
+                  </h3>
 
-                  <p className="text-gray-400 font-light text-base leading-relaxed line-clamp-2 mb-8 group-hover:text-gray-300 transition-colors">
+                  <p className="text-gray-500 font-light text-base leading-relaxed line-clamp-2 mb-8 max-w-xl">
                     {post.excerpt}
                   </p>
 
-                  {/* Author & Footer */}
-                  <div className="mt-auto flex items-center justify-between">
+                  {/* Footer */}
+                  <div className="mt-auto pt-6 border-t border-white/5 flex items-center justify-between">
                     <div className="flex items-center gap-3">
-                      {post.author?.avatar && (
-                        <img src={post.author.avatar} className="w-8 h-8 rounded-full border border-white/10" alt={post.author.name} />
-                      )}
-                      <span className="text-xs text-gray-400 group-hover:text-white transition-colors">{post.author?.name || "Editorial Staff"}</span>
+                      <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#C61407] to-[#800000] overflow-hidden border border-white/10">
+                        {post.author?.avatar && (
+                          <img src={post.author.avatar} alt="" className="w-full h-full object-cover" />
+                        )}
+                      </div>
+                      <div className="flex flex-col">
+                        <span className="text-[10px] text-white font-bold tracking-wide">{post.author?.name || "Editorial"}</span>
+                        <span className="text-[9px] text-gray-500 uppercase tracking-tighter">Strategist</span>
+                      </div>
                     </div>
                     
                     <motion.div 
-                      whileHover={{ x: 5 }}
-                      className="text-white group-hover:text-[#C61407] transition-colors"
+                      className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white group-hover:bg-[#C61407] group-hover:border-[#C61407] transition-all duration-500"
                     >
-                      <ChevronRight size={20} />
+                      <ChevronRight size={18} />
                     </motion.div>
                   </div>
-
-                  {/* Hover Shadow Bloom */}
-                  <div className="absolute inset-0 -z-10 bg-[#C61407]/0 group-hover:bg-[#C61407]/5 blur-3xl transition-all duration-700 rounded-full scale-75 group-hover:scale-100" />
                 </motion.article>
               );
             })}
