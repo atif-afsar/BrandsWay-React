@@ -11,6 +11,8 @@ import Navbar from './Components/common/Navbar'
 import Footer from './Components/common/Footer'
 import BrandsWayLoader from './Components/common/BrandsWayLoader'
 import ScrollToTop from './Components/common/ScrollToTop'
+import TermsAndConditions from './Components/common/TermsAndConditions'
+import PrivacyPolicy from './Components/common/PrivacyPolicy'
 // import Cursor from './Components/common/Cursor'
 
 const App = () => {
@@ -39,6 +41,9 @@ const App = () => {
             <Route path="/insights" element={<Insights />} />
             <Route path="/blog/:slug" element={<BlogDetail />} />
             <Route path="/contact-us" element={<Contact />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/terms-and-condition" element={<TermsAndConditions />} />
+
           </Routes>
           <Footer />
         </Router>

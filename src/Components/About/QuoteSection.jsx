@@ -67,7 +67,7 @@ export default function QuoteSection() {
                 <img
                     src="/about/yasir.png"
                     alt="Yasir Ali"
-                    className="relative w-20 h-20 rounded-full object-cover shadow-[0_10px_40px_rgba(0,0,0,0.35)] transition duration-700 group-hover:scale-105"
+                    className="relative w-25 h-25 rounded-full object-cover shadow-[0_10px_40px_rgba(0,0,0,0.35)] transition duration-700 group-hover:scale-105"
                 />
                 </div>
 

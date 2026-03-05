@@ -89,8 +89,8 @@ const Footer = () => {
 
   const resources = [
     { name: "Growth Blogs", href: "/insights" },
-    { name: "Terms & Condition", href: "#" },
-    { name: "Privacy Policy", href: "#" },
+    { name: "Terms & Condition", href: "/terms-and-condition" },
+    { name: "Privacy Policy", href: "/privacy-policy" },
   ];
 
   return (

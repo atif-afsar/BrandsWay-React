@@ -22,7 +22,7 @@ const InsightsSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
             viewport={{ once: true }}
-            className="mt-4 text-gray-600 text-base md:text-lg max-w-2xl leading-relaxed"
+            className="mt-4 text-gray-600 font-normal text-base md:text-lg max-w-2xl leading-relaxed"
           >
             Thought leadership and deep dives into the intersection of strategic branding, 
             digital-first marketing, and future-ready design.
@@ -66,7 +66,7 @@ const InsightsSection = () => {
             </h3>
 
             {/* Excerpt */}
-            <p className="text-gray-600 text-sm leading-relaxed mb-6">
+            <p className="text-gray-600 font-medium text-sm leading-relaxed mb-6">
               Discover how global brands are pivoting their visual systems to thrive in an era 
               where the smartphone is the primary interface for customer connection.
             </p>

@@ -75,7 +75,7 @@ export default function CorePrinciples() {
             whileInView={{ opacity: 1 }}
             transition={{ delay: 0.3 }}
             viewport={{ once: true }}
-            className="text-gray-500 max-w-sm text-lg font-normal leading-relaxed"
+            className="text-gray-500 max-w-sm text-lg font-medium leading-relaxed"
           >
             The foundation of everything we do, from high-level client relations to precise campaign execution.
           </motion.p>
@@ -116,7 +116,7 @@ export default function CorePrinciples() {
                 <h3 className="text-2xl font-bold text-gray-900 mb-4 tracking-tight">
                   {item.title}
                 </h3>
-                <p className="text-gray-500 font-normal leading-relaxed group-hover:text-gray-700 transition-colors">
+                <p className="text-gray-500 font-medium leading-relaxed group-hover:text-gray-700 transition-colors">
                   {item.desc}
                 </p>
 

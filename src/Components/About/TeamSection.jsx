@@ -3,18 +3,18 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const team = [
-  { name: "Elena Rodriguez", role: "Founder & Managing Director", img: "/team/member1.png" },
-  { name: "Marcus Chen", role: "Head of Creative Strategy", img: "/team/member2.png" },
-  { name: "Sarah Jenkins", role: "Director of Communications", img: "/team/member3.png" },
-  { name: "David Thorne", role: "Lead Growth Analyst", img: "/team/member4.png" },
-  { name: "Sophia Malik", role: "Brand Strategist", img: "/team/member5.png" },
-  { name: "Liam Scott", role: "Media Planner", img: "/team/member6.png" },
-  { name: "Julianne Moore", role: "Public Relations Lead", img: "/team/member7.png" },
-  { name: "Aaron Vane", role: "Content Director", img: "/team/member8.png" },
-  { name: "Isabella Cruz", role: "Digital Marketing Specialist", img: "/team/member9.png" },
-  { name: "Kevin Zhang", role: "UX/UI Lead", img: "/team/member10.png" },
-  { name: "Rachel Adams", role: "Account Executive", img: "/team/member11.png" },
-  { name: "Michael Ross", role: "Creative Director", img: "/team/member12.png" },
+  { name: "Arbaz", role: "Team Leader | Sales & Marketing Head", img: "/team/member1.png" },
+  { name: "Atif Afsar", role: "Web Developer", img: "/team/member2.png" },
+  { name: "Affan Aziz", role: "Graphic Designer Head", img: "/team/member5.png" },
+  { name: "Saima Ahmad", role: "Graphic Designer", img: "/team/member3.png" },
+  { name: "Shazra Wali", role: "Graphic Designer", img: "/team/member12.png" },
+  { name: "Mohd Zaid", role: "Video Editor", img: "/team/member9.png" },
+  { name: "Mohammad Abuzar Khan", role: "Video Editor", img: "/team/member6.png" },
+  { name: "Syed Fuzail", role: "Video Editor", img: "/team/member8.png" },
+  { name: "Sameer khan", role: "Contact Creator", img: "/team/member4.png" },
+  { name: "Zoha Amir Khan", role: "PR Head & Content Creator", img: "/team/member7.png" },
+  { name: "Alisha Akhtar", role: "Social Media Manager", img: "/team/member10.png" },
+  { name: "Shifa Khanam", role: "Social Media Manager", img: "/team/member11.png" },
 ];
 
 export default function TeamSection() {
@@ -81,7 +81,7 @@ export default function TeamSection() {
               The Minds Behind <br /> <span className="text-[#c61407]">BrandsWay</span>
             </h2>
           </div>
-          <p className="text-gray-500 max-w-sm text-lg font-light leading-relaxed mx-auto md:mx-0">
+          <p className="text-gray-500 max-w-sm text-lg font-normal leading-relaxed mx-auto md:mx-0">
             A high-performance team of disruptors and creators dedicated to your brand's evolution.
           </p>
         </div>

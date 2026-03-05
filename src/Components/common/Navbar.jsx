@@ -42,7 +42,7 @@ const Navbar = () => {
             {/* Logo */}
             <Link to="/" className="flex flex-col flex-shrink-0 text-xl font-black tracking-tight">
               <div>
-                <span className="text-black">Brands</span>
+                <span className="text-black">The Brands</span>
                 <span className="text-[#C61407]">Way</span>
               </div>
               <p className="text-[10px] font-medium text-gray-600 leading-tight">PR & Marketing Agency</p>
