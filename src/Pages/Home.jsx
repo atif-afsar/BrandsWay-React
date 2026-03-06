@@ -1,6 +1,7 @@
 import React from 'react'
 import Hero from '../Components/Home/Hero'
 import ServicesSection from '../Components/Home/Services'
+import BestWorkSection from '../Components/BestWork/BestWorkSection'
 import ResultsSection from '../Components/Home/Results'
 import WhyChooseUs from '../Components/Home/WhyChooseUs'
 import FAQSection from '../Components/Home/FAQs'
@@ -13,6 +14,7 @@ const Home = () => {
     <div>
       <Hero />
       <ServicesSection/>
+      <BestWorkSection />
       <ScrollFillSection />
       <ProcessSection />
       <ResultsSection />
