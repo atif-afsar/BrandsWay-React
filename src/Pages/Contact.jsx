@@ -21,8 +21,21 @@ const Contact = () => {
   {/* Social Links Footer */}
   <div className="mt-12 flex items-center gap-6 text-[10px] font-bold uppercase tracking-widest text-gray-400">
     <span>Follow Us</span>
-    {['LinkedIn', 'Twitter', 'Instagram'].map(link => (
-      <a key={link} href="#" className="text-gray-900 hover:text-[#C61407] transition-colors">{link}</a>
+    {[
+      { name: 'LinkedIn', href: 'https://www.linkedin.com/company/the-brandsway/' },
+      { name: 'Twitter', href: 'https://x.com/BrandsWay00/' },
+      { name: 'Instagram', href: 'https://www.instagram.com/thebrandsway/' },
+      { name: 'Facebook', href: 'https://www.facebook.com/Thebrandsway' }
+    ].map(link => (
+      <a 
+        key={link.name} 
+        href={link.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-gray-900 hover:text-[#C61407] transition-colors"
+      >
+        {link.name}
+      </a>
     ))}
   </div>
 </section>

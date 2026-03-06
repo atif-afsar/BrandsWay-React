@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 const AboutCTA = () => {
   // Animation Variants (Consistent with your premium theme)
@@ -89,7 +90,9 @@ const AboutCTA = () => {
 
         {/* Action Buttons */}
         <motion.div variants={itemVariants} className="flex flex-col sm:flex-row justify-center gap-4">
-          <motion.button
+            <Link to={"/contact-us"}>
+          <motion.div
+        
             whileHover={{ 
               backgroundColor: "#C61407",
               scale: 1.05,
@@ -99,14 +102,19 @@ const AboutCTA = () => {
             className="px-12 py-5 bg-black text-white text-xs font-bold uppercase tracking-[0.2em] rounded-full transition-all"
           >
             Start Your Journey
-          </motion.button>
-
-          <motion.button
+          </motion.div>
+          </Link>
+          <motion.div
             whileHover={{ backgroundColor: "rgba(0,0,0,0.05)" }}
-            className="px-12 py-5 bg-transparent border border-black/10 text-black text-xs font-bold uppercase tracking-[0.2em] rounded-full transition-all"
+            className="inline-block rounded-full"
           >
-            View Case Studies
-          </motion.button>
+            <Link
+              to="/#bestwork"
+              className="block px-12 py-5 bg-transparent border border-black/10 text-black text-xs font-bold uppercase tracking-[0.2em] rounded-full transition-all"
+            >
+              View Case Studies
+            </Link>
+          </motion.div>
         </motion.div>
       </motion.div>
 

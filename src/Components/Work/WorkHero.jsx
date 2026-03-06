@@ -1,8 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowDown } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
-const PortfolioHero = () => {
+const PortfolioHero = ({ onLatestCaseStudiesClick }) => {
   // Animation Variants for refined control
   const fadeInUp = {
     initial: { opacity: 0, y: 30 },
@@ -70,6 +71,7 @@ const PortfolioHero = () => {
         >
           {/* Primary Button (Red) */}
           <motion.button
+            onClick={onLatestCaseStudiesClick}
             whileHover={{ 
               scale: 1.05, 
               backgroundColor: "#a51106",
@@ -88,6 +90,7 @@ const PortfolioHero = () => {
           </motion.button>
 
           {/* Secondary Button (White) */}
+          <Link to={"/contact-us"}>
           <motion.button
             whileHover={{ 
               scale: 1.05, 
@@ -97,8 +100,9 @@ const PortfolioHero = () => {
             whileTap={{ scale: 0.95 }}
             className="px-10 py-4 bg-white/80 backdrop-blur-sm text-[#1a1c2e] font-bold rounded-2xl border border-white transition-all"
           >
-            Our Approach
+            Contact Now
           </motion.button>
+          </Link>
         </motion.div>
       </div>
 

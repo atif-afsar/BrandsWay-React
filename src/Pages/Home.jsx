@@ -20,7 +20,7 @@ const Home = () => {
     <div>
       <Hero onSeeImpactClick={scrollToBestWork} />
       <ServicesSection/>
-      <div ref={bestWorkRef}>
+      <div id="bestwork" ref={bestWorkRef}>
         <BestWorkSection />
       </div>
       <ScrollFillSection />

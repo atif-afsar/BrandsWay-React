@@ -28,9 +28,11 @@ const BestWorkSection = () => {
           metrics={{
             reach: "22.5M",
             engagement: "14.2%",
-            platform: "Global"
+            platform: "Instagram"
           }}
-          videoSrc="https://cdn.pixabay.com/video/2020/09/25/51111-464303423_large.mp4"
+          isInstagramEmbed={true}
+          instagramReelUrl="https://www.instagram.com/reel/DS7PqruCDn7/"
+          instagramLink="https://www.instagram.com/thebrandsway/"
         />
       </div>
 

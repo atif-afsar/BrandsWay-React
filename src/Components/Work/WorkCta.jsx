@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 const WorkCTA = () => {
   // Animation Variants (Preserved from your original for consistency)
@@ -80,6 +81,7 @@ const WorkCTA = () => {
 
         {/* Button Container */}
         <motion.div variants={itemVariants} className="flex justify-center">
+          <Link to={"/contact-us"}>
           <motion.button
             whileHover={{ 
               backgroundColor: "#C61407",
@@ -92,6 +94,7 @@ const WorkCTA = () => {
           >
             Start a Project
           </motion.button>
+          </Link>
         </motion.div>
       </motion.div>
 

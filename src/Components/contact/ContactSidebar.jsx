@@ -18,7 +18,7 @@ const ContactSidebar = () => {
             <h4 className="font-bold text-sm">Studio</h4>
           </div>
           <p className="text-sm text-gray-500 leading-relaxed">
-            123 Creative Blvd, Suite 400<br />San Francisco, CA 94103
+            IT Plaza, Abdullah Road, Aligarh, Uttar Pradesh 202001
           </p>
         </div>
 
@@ -28,7 +28,7 @@ const ContactSidebar = () => {
             <h4 className="font-bold text-sm">Contact</h4>
           </div>
           <p className="text-sm text-gray-500 leading-relaxed">
-            hello@brandsway.com<br />+1 (555) 123-4567
+           brandswaying@gmail.com<br />+91-7302988039
           </p>
         </div>
       </div>
@@ -57,12 +57,13 @@ const ContactSidebar = () => {
           <h4 className="text-lg font-bold mb-1">Prefer to talk live?</h4>
           <p className="text-white/70 text-xs">Book a 15-minute discovery call with our leads.</p>
         </div>
-        <motion.button 
+        <motion.a 
+         href="tel:+917302988037"
           whileHover={{ y: -2 }}
           className="bg-white text-[#C61407] px-6 py-3 rounded-xl font-bold text-xs whitespace-nowrap"
         >
           Schedule Call
-        </motion.button>
+        </motion.a>
       </div>
     </motion.div>
   );

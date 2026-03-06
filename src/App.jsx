@@ -13,6 +13,7 @@ import BrandsWayLoader from './Components/common/BrandsWayLoader'
 import ScrollToTop from './Components/common/ScrollToTop'
 import TermsAndConditions from './Components/common/TermsAndConditions'
 import PrivacyPolicy from './Components/common/PrivacyPolicy'
+import BestWorkSection from './Components/BestWork/BestWorkSection'
 // import Cursor from './Components/common/Cursor'
 
 const App = () => {
@@ -43,6 +44,8 @@ const App = () => {
             <Route path="/contact-us" element={<Contact />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/terms-and-condition" element={<TermsAndConditions />} />
+            <Route path="/bestWork" element={<BestWorkSection />} />
+
 
           </Routes>
           <Footer />

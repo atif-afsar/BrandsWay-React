@@ -1,7 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
-const AboutHero = () => {
+const AboutHero = ({ onLearnStoryClick }) => {
   return (
     <section className="relative min-h-screen w-full flex flex-col justify-between overflow-hidden bg-black">
       
@@ -71,6 +72,7 @@ const AboutHero = () => {
             className="mt-12 flex flex-col sm:flex-row gap-4"
           >
             <motion.button
+              onClick={onLearnStoryClick}
               whileHover={{ scale: 1.02, backgroundColor: '#C61407' }}
               whileTap={{ scale: 0.98 }}
               className="px-10 py-4 bg-[#C61407] text-white font-medium rounded-full shadow-[0_10px_40px_-10px_rgba(198,20,7,0.5)] transition-colors"
@@ -78,12 +80,17 @@ const AboutHero = () => {
               Learn Our Story
             </motion.button>
             
-            <motion.button
+            <motion.div
               whileHover={{ backgroundColor: 'rgba(255,255,255,0.1)' }}
-              className="px-10 py-4 bg-transparent border border-white/20 text-white font-medium rounded-full backdrop-blur-md transition-all"
+              className="inline-block rounded-full"
             >
-              Contact Us
-            </motion.button>
+              <Link
+                to={"/contact-us"}
+                className="block px-10 py-4 bg-transparent border border-white/20 text-white font-medium rounded-full backdrop-blur-md transition-all"
+              >
+                Contact Us
+              </Link>
+            </motion.div>
           </motion.div>
         </div>
       </div>

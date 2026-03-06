@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { motion } from 'framer-motion';
 import AboutHero from '../Components/About/AboutHero';
 import StorySection from '../Components/About/StorySection';
@@ -8,10 +8,18 @@ import TeamSection from '../Components/About/TeamSection';
 import AboutCTA from '../Components/About/AboutCta';
 
 const About = () => {
+  const storySectionRef = useRef(null);
+
+  const scrollToStory = () => {
+    storySectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
   return (
     <div>
-      <AboutHero />
-      <StorySection />
+      <AboutHero onLearnStoryClick={scrollToStory} />
+      <div ref={storySectionRef}>
+        <StorySection />
+      </div>
       <CorePrinciples />
       <QuoteSection />
       <TeamSection />
