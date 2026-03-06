@@ -9,7 +9,7 @@ const app = express();
 
 // Configure CORS to allow requests from your frontend
 app.use(cors({
-  origin: ['http://localhost:5173', 'http://localhost:3000', 'http://localhost:5174'],
+  origin: '*',
   methods: ['GET', 'POST'],
   credentials: true
 }));
@@ -52,7 +52,4 @@ app.post("/contact", async (req, res) => {
   }
 });
 
-const port = process.env.PORT || 5000;
-app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
-});
+export default app;

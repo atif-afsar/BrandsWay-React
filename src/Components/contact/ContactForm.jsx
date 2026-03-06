@@ -26,7 +26,7 @@ const ContactForm = () => {
     setStatus({ type: '', message: '' });
 
     try {
-      const response = await fetch('http://localhost:5000/contact', {
+      const response = await fetch('https://brands-way-react.vercel.app/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
