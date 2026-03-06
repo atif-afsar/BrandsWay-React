@@ -110,10 +110,10 @@ const Footer = () => {
             {/* Socials */}
             <div className="flex gap-3 mt-2">
               {[
-                { name: 'Twitter', icon: FaTwitter, href: '#' },
-                { name: 'Facebook', icon: FaFacebook, href: '#' },
-                { name: 'LinkedIn', icon: FaLinkedin, href: '#' },
-                { name: 'Instagram', icon: FaInstagram, href: '#' }
+                { name: 'Instagram', icon: FaInstagram, href: 'https://www.instagram.com/thebrandsway/' },
+                { name: 'Twitter', icon: FaTwitter, href: 'https://x.com/BrandsWay00/' },
+                { name: 'Facebook', icon: FaFacebook, href: 'https://www.facebook.com/Thebrandsway' },
+                { name: 'LinkedIn', icon: FaLinkedin, href: 'https://www.linkedin.com/company/the-brandsway/' },
               ].map((social) => {
                 const Icon = social.icon;
                 return (

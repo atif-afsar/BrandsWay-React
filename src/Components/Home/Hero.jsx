@@ -1,7 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
-const Hero = () => {
+const Hero = ({ onSeeImpactClick }) => {
   const avatars = [
     "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=250&h=250&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=250&h=250&auto=format&fit=crop",
@@ -81,35 +82,35 @@ const Hero = () => {
       <div className="relative z-10 lg:hidden flex flex-col flex-1 px-5 sm:px-8 pt-24 pb-6 gap-8">
 
         {/* Badge */}
-       <motion.span
-  initial={{ opacity: 0, y: -10 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{ delay: 0.2 }}
-  className="relative inline-flex items-center gap-2 mt-4 self-start 
+        <motion.span
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2 }}
+          className="relative inline-flex items-center gap-2 mt-4 self-start 
              bg-black text-white text-[10px] font-bold uppercase 
              tracking-widest px-3.5 py-1.5 rounded-full"
-  style={{ isolation: 'isolate' }}
->
-  {/* Animated rotating gradient border */}
-  <span 
-    className="absolute -inset-[1px] rounded-full animate-spin-slow"
-    style={{
-      background: 'conic-gradient(from 0deg, transparent 0%, white 10%, transparent 20%, transparent 100%)',
-      zIndex: -1
-    }}
-  />
-  
-  {/* Inner black background to create border effect */}
-  <span className="absolute inset-0 rounded-full bg-black" style={{ zIndex: 0 }} />
+          style={{ isolation: 'isolate' }}
+        >
+          {/* Animated rotating gradient border */}
+          <span
+            className="absolute -inset-[1px] rounded-full animate-spin-slow"
+            style={{
+              background: 'conic-gradient(from 0deg, transparent 0%, white 10%, transparent 20%, transparent 100%)',
+              zIndex: -1
+            }}
+          />
 
-  {/* Red pulse dot */}
-  <span className="w-1.5 h-1.5 rounded-full bg-[#C61407] animate-pulse relative z-10" />
+          {/* Inner black background to create border effect */}
+          <span className="absolute inset-0 rounded-full bg-black" style={{ zIndex: 0 }} />
 
-  {/* Text */}
-  <span className="relative z-10">
-    Available for new projects
-  </span>
-</motion.span>
+          {/* Red pulse dot */}
+          <span className="w-1.5 h-1.5 rounded-full bg-[#C61407] animate-pulse relative z-10" />
+
+          {/* Text */}
+          <span className="relative z-10">
+            Available for new projects
+          </span>
+        </motion.span>
 
         {/* Headline */}
         <motion.h1
@@ -142,11 +143,11 @@ const Hero = () => {
           transition={{ delay: 0.6 }}
           className="flex flex-wrap gap-3"
         >
-          <button className="flex items-center gap-2 bg-[#C61407] text-white px-5 py-3 rounded-full font-semibold text-sm hover:bg-red-800 transition-all shadow-lg shadow-red-200/60 active:scale-95">
+          <Link to={"/contact-us"} className="flex items-center gap-2 bg-[#C61407] text-white px-5 py-3 rounded-full font-semibold text-sm hover:bg-red-800 transition-all shadow-lg shadow-red-200/60 active:scale-95">
             <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix" className="w-5 h-5 rounded-full bg-white/20" alt="" />
             Request Proposal
-          </button>
-          <button className="px-6 py-3 rounded-full border-2 border-gray-900 text-gray-900 font-semibold text-sm hover:bg-gray-900 hover:text-white transition-all active:scale-95">
+          </Link>
+          <button onClick={onSeeImpactClick} className="px-6 py-3 rounded-full border-2 border-gray-900 text-gray-900 font-semibold text-sm hover:bg-gray-900 hover:text-white transition-all active:scale-95">
             See Our Impact
           </button>
         </motion.div>
@@ -261,7 +262,7 @@ const Hero = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-4xl sm:text-5xl xl:text-6xl font-light md:font-thin text-black leading-[1.1] tracking-tight"
+              className="text-4xl sm:text-5xl xl:text-6xl font-light md:font-thin text-black leading-[1.1] tracking-tight"
             >
               We Shape the
               <br />
@@ -289,11 +290,11 @@ const Hero = () => {
               transition={{ delay: 0.65 }}
               className="flex flex-wrap gap-3"
             >
-              <button className="flex items-center gap-2 bg-[#C61407] text-white px-6 py-3 rounded-full font-semibold text-sm hover:bg-red-800 transition-all shadow-lg shadow-red-200/60 active:scale-95">
+              <Link to={"/contact-us"} className="flex items-center gap-2 bg-[#C61407] text-white px-6 py-3 rounded-full font-semibold text-sm hover:bg-red-800 transition-all shadow-lg shadow-red-200/60 active:scale-95">
                 <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix" className="w-5 h-5 rounded-full bg-white/20" alt="" />
                 Request Proposal
-              </button>
-              <button className="px-7 py-3 rounded-full border-2 border-gray-900 text-gray-900 font-semibold text-sm hover:bg-gray-900 hover:text-white transition-all active:scale-95">
+              </Link>
+              <button onClick={onSeeImpactClick} className="px-7 py-3 rounded-full border-2 border-gray-900 text-gray-900 font-semibold text-sm hover:bg-gray-900 hover:text-white transition-all active:scale-95">
                 See Our Impact
               </button>
             </motion.div>

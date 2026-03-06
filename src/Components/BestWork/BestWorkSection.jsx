@@ -64,9 +64,9 @@ const BestWorkSection = () => {
         <h3 className="text-white text-3xl md:text-5xl font-medium font-black uppercase tracking-tighter mb-8">
           Have a Project <span className="text-[#C61407]">In Mind?</span>
         </h3>
-        <button className="bg-transparent border border-white/20 hover:border-[#C61407] text-white px-10 py-4 rounded-full uppercase tracking-widest text-xs font-bold transition-all duration-500 hover:shadow-[0_0_30px_rgba(198,20,7,0.2)]">
+        <motion.a href='tel:+917302988037' className="bg-transparent border border-white/20 hover:border-[#C61407] text-white px-10 py-4 rounded-full uppercase tracking-widest text-xs font-bold transition-all duration-500 hover:shadow-[0_0_30px_rgba(198,20,7,0.2)]">
           Let's Talk
-        </button>
+        </motion.a>
       </motion.footer>
       
     </main>

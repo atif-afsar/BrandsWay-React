@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 const CTASection = () => {
   // Animation Variants
@@ -81,7 +82,7 @@ const CTASection = () => {
 
         {/* Button Container */}
         <motion.div variants={itemVariants} className="flex justify-center">
-          <motion.button
+          <motion.div
             whileHover={{ 
               backgroundColor: "#C61407",
               scale: 1.04,
@@ -89,10 +90,15 @@ const CTASection = () => {
             }}
             whileTap={{ scale: 0.98 }}
             transition={{ type: "spring", stiffness: 400, damping: 17 }}
-            className="px-10 py-5 bg-black text-white text-sm font-medium uppercase tracking-[0.2em] rounded-full shadow-lg shadow-black/5 transition-colors duration-300"
+            className="inline-block rounded-full"
           >
-            Book Strategy Call
-          </motion.button>
+            <Link
+              to={"/contact-us"}
+              className="block px-10 py-5 bg-black text-white text-sm font-medium uppercase tracking-[0.2em] rounded-full shadow-lg shadow-black/5"
+            >
+              Request Proposal
+            </Link>
+          </motion.div>
         </motion.div>
       </motion.div>
 

@@ -63,7 +63,8 @@ const Navbar = () => {
             </div>
 
             {/* Desktop CTA */}
-            <motion.button
+            <motion.a
+              href="tel:+917302988037"
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
               className="hidden md:flex items-center gap-2 bg-[#C61407] text-white px-4 py-1.5 rounded-full text-[13px] font-semibold hover:bg-red-700 transition-colors shadow-sm shadow-red-200"
@@ -74,7 +75,7 @@ const Navbar = () => {
                 alt="avatar"
               />
               Book a Discovery Call
-            </motion.button>
+            </motion.a>
 
             {/* Mobile hamburger */}
             <button
@@ -140,7 +141,8 @@ const Navbar = () => {
                 ))}
 
                 {/* Mobile CTA */}
-                <motion.button
+                <motion.a
+                  href="tel:+917302988037"
                   initial={{ opacity: 0, y: 8 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.28, duration: 0.2 }}
@@ -151,8 +153,8 @@ const Navbar = () => {
                     className="w-6 h-6 rounded-full bg-white/20"
                     alt="avatar"
                   />
-                  Book a Discovery Call
-                </motion.button>
+                   Book a Discovery Call
+                </motion.a>
               </div>
             </motion.div>
           )}

@@ -136,7 +136,7 @@ const FAQSection = () => {
             Still have questions?
           </motion.p>
           
-          <motion.button
+          <motion.a href='tel:+917302988037'
             whileHover={{ 
               backgroundColor: "#C61407",
               scale: 1.05,
@@ -146,7 +146,7 @@ const FAQSection = () => {
             className="px-10 py-5 bg-black text-white text-xs font-bold uppercase tracking-[0.2em] rounded-full shadow-lg shadow-black/5 transition-all"
           >
             Book Strategy Call
-          </motion.button>
+          </motion.a>
         </div>
 
       </div>

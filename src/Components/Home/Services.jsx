@@ -26,7 +26,7 @@ const ServiceCard = ({ service, index }) => {
       whileHover={{ y: -8 }}
       className="relative shrink-0 rounded-3xl flex flex-col justify-between group cursor-pointer overflow-hidden
                  w-full sm:w-[300px] md:w-[280px]
-                 h-auto min-h-[200px] sm:h-[420px] md:h-[380px]"
+                 h-auto min-h-[200px] sm:h-[340px] md:h-[320px]"
       style={{
         background: 'white',
         border: '1px solid rgba(0,0,0,0.07)',
@@ -50,7 +50,7 @@ const ServiceCard = ({ service, index }) => {
         {service.tag}
       </div>
 
-      <div className="relative z-10 p-5 sm:p-8 flex flex-col h-full justify-between gap-5 sm:gap-0">
+      <div className="relative z-10 p-5 sm:p-6 flex flex-col h-full justify-between gap-4 sm:gap-0">
         <div>
           {/* Icon */}
           <div
@@ -66,7 +66,7 @@ const ServiceCard = ({ service, index }) => {
 
           {/* Title */}
           <h3
-            className="mt-5 sm:mt-8 text-[18px] sm:text-[22px] font-bold tracking-tight leading-tight transition-colors duration-300 group-hover:text-white"
+            className="mt-4 sm:mt-5 text-[18px] sm:text-[22px] font-bold tracking-tight leading-tight transition-colors duration-300 group-hover:text-white"
             style={{ color: '#111', fontFamily: '"Sora", sans-serif' }}
           >
             {service.title}
@@ -74,35 +74,24 @@ const ServiceCard = ({ service, index }) => {
 
           {/* Divider */}
           <div
-            className="mt-3 sm:mt-4 h-px w-10 transition-all duration-300 group-hover:w-16 group-hover:bg-white/40"
+            className="mt-2 sm:mt-3 h-px w-10 transition-all duration-300 group-hover:w-16 group-hover:bg-white/40"
             style={{ background: '#C61407' }}
           />
 
           {/* Description */}
           <p
-            className="mt-3 sm:mt-5 text-sm leading-relaxed transition-colors duration-300 group-hover:text-white/75"
+            className="mt-2 sm:mt-3 text-sm leading-relaxed transition-colors duration-300 group-hover:text-white/75"
             style={{ color: '#6b7280' }}
           >
             {service.desc}
           </p>
         </div>
 
-        {/* CTA */}
-        <div className="flex items-center gap-2 sm:mt-8">
-          <span
-            className="text-xs font-bold tracking-widest uppercase transition-colors duration-300 group-hover:text-white"
-            style={{ color: '#C61407' }}
-          >
-            Explore
-          </span>
-          <motion.span
-            className="inline-block transition-colors duration-300 group-hover:text-white"
-            style={{ color: '#C61407' }}
-            animate={{ x: [0, 4, 0] }}
-            transition={{ repeat: Infinity, duration: 1.6, ease: 'easeInOut' }}
-          >
-            →
-          </motion.span>
+        {/* Minimal corner accent */}
+        <div className="absolute bottom-5 right-5 sm:bottom-6 sm:right-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="text-white/60">
+            <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
         </div>
       </div>
     </motion.div>
