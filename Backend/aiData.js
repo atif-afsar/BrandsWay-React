@@ -1,5 +1,5 @@
 // aiData.js - Company information for AI assistant
-export const companyData = {
+const companyData = {
   name: "BrandsWay",
   description: "A premier creative agency specializing in branding, web development, digital marketing, and innovative design solutions that help businesses thrive in the digital landscape.",
   services: [
@@ -132,7 +132,7 @@ export const companyData = {
   ]
 };
 
-export const getContextForAI = (query) => {
+module.exports = { companyData, getContextForAI };
   // This function can be used to provide relevant context based on the user's query
   const lowerQuery = query.toLowerCase();
 
@@ -178,6 +178,8 @@ export const getContextForAI = (query) => {
 
   return context;
 };
+
+module.exports = { companyData, getContextForAI };
 
   if (lowerQuery.includes('contact') || lowerQuery.includes('email') || lowerQuery.includes('phone')) {
     context += `Contact us at ${companyData.contact.email} or ${companyData.contact.phone}. `;

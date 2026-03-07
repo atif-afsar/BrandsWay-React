@@ -1,9 +1,7 @@
-import Groq from 'groq-sdk';
-import cors from 'cors';
-import dotenv from 'dotenv';
-import { getContextForAI } from '../aiData.js';
-
-dotenv.config();
+const Groq = require('groq-sdk');
+const cors = require('cors');
+require('dotenv').config();
+const { getContextForAI } = require('../aiData.js');
 
 const groq = new Groq({
   apiKey: process.env.GROQ_API_KEY,
@@ -16,7 +14,7 @@ const corsMiddleware = cors({
   credentials: true
 });
 
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
   // Handle CORS
   corsMiddleware(req, res, async () => {
     try {

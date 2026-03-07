@@ -1,8 +1,6 @@
-import nodemailer from "nodemailer";
-import cors from "cors";
-import dotenv from "dotenv";
-
-dotenv.config();
+const nodemailer = require("nodemailer");
+const cors = require("cors");
+require("dotenv").config();
 
 // Initialize CORS
 const corsMiddleware = cors({
@@ -11,7 +9,7 @@ const corsMiddleware = cors({
   credentials: true
 });
 
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
   // Handle CORS
   corsMiddleware(req, res, async () => {
     try {
