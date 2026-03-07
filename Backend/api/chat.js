@@ -1,6 +1,6 @@
 const Groq = require('groq-sdk');
 const cors = require('cors');
-require('dotenv').config();
+// require('dotenv').config(); // Remove this - Vercel handles env vars automatically
 const { getContextForAI } = require('../aiData.js');
 
 const groq = new Groq({
@@ -18,11 +18,14 @@ module.exports = async function handler(req, res) {
   // Handle CORS
   corsMiddleware(req, res, async () => {
     try {
+      console.log('Chat API called with method:', req.method);
+
       if (req.method !== 'POST') {
         return res.status(405).json({ error: 'Method not allowed' });
       }
 
       const { message } = req.body;
+      console.log('Received message:', message);
 
       if (!message) {
         return res.status(400).json({
@@ -31,12 +34,22 @@ module.exports = async function handler(req, res) {
         });
       }
 
+      if (!process.env.GROQ_API_KEY) {
+        console.error('GROQ_API_KEY not found');
+        return res.status(500).json({
+          success: false,
+          error: 'API key not configured'
+        });
+      }
+
       // Get context based on the user's message
       const context = getContextForAI(message);
+      console.log('Generated context length:', context.length);
 
       // Create the prompt for Groq
       const systemPrompt = `${context}\n\nUser query: ${message}\n\nPlease provide a helpful response based on the company information provided.`;
 
+      console.log('Calling Groq API...');
       // Call Groq API
       const chatCompletion = await groq.chat.completions.create({
         messages: [
@@ -55,6 +68,7 @@ module.exports = async function handler(req, res) {
       });
 
       const aiResponse = chatCompletion.choices[0]?.message?.content;
+      console.log('Groq response received, length:', aiResponse?.length || 0);
 
       if (!aiResponse) {
         return res.status(500).json({
@@ -70,9 +84,12 @@ module.exports = async function handler(req, res) {
 
     } catch (error) {
       console.error('Chat API Error:', error);
+      console.error('Error details:', error.message);
+      console.error('Error stack:', error.stack);
       res.status(500).json({
         success: false,
-        error: error.message || 'Internal server error'
+        error: error.message || 'Internal server error',
+        details: process.env.NODE_ENV === 'development' ? error.stack : undefined
       });
     }
   });

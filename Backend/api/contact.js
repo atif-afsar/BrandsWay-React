@@ -1,6 +1,6 @@
 const nodemailer = require("nodemailer");
 const cors = require("cors");
-require("dotenv").config();
+// require("dotenv").config(); // Remove this - Vercel handles env vars automatically
 
 // Initialize CORS
 const corsMiddleware = cors({
