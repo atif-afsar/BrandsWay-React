@@ -1,4 +1,4 @@
-// CORS headers helper
+// Root API handler for testing
 function setCorsHeaders(res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
@@ -7,22 +7,20 @@ function setCorsHeaders(res) {
 }
 
 module.exports = async function handler(req, res) {
-  // Handle CORS preflight
   setCorsHeaders(res);
   
   if (req.method === 'OPTIONS') {
     return res.status(200).end();
   }
 
-  // Allow both GET and POST
   res.status(200).json({
-    message: "API is working!",
-    timestamp: new Date().toISOString(),
-    method: req.method,
-    env: {
-      hasGroqKey: !!process.env.GROQ_API_KEY,
-      hasEmailUser: !!process.env.EMAIL_USER,
-      hasEmailPass: !!process.env.EMAIL_PASS
-    }
+    message: "BrandsWay Backend API",
+    status: "running",
+    endpoints: {
+      contact: "/api/contact (POST)",
+      chat: "/api/chat (POST)",
+      test: "/api/test (GET/POST)"
+    },
+    timestamp: new Date().toISOString()
   });
 };
