@@ -49,7 +49,7 @@ const Navbar = () => {
             </Link>
 
             {/* Desktop nav links */}
-            <div className="hidden md:flex items-center gap-7 text-[13px] font-medium text-gray-500">
+            <div className="hidden md:flex items-center gap-7 text-[15px] font-medium text-gray-500">
               {links.map((link) => (
                 <Link
                   key={link}
