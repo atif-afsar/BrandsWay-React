@@ -14,6 +14,7 @@ import ScrollToTop from './Components/common/ScrollToTop'
 import TermsAndConditions from './Components/common/TermsAndConditions'
 import PrivacyPolicy from './Components/common/PrivacyPolicy'
 import BestWorkSection from './Components/BestWork/BestWorkSection'
+import Assistant from './Components/AI/Assistant'
 // import Cursor from './Components/common/Cursor'
 
 const App = () => {
@@ -31,25 +32,28 @@ const App = () => {
       </AnimatePresence>
       
       {!loading && (
-        <Router>
-          <ScrollToTop />
-          <Navbar />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/home" element={<Home />} />
-            <Route path="/about-us" element={<About />} />
-            <Route path="/our-work" element={<OurWork />} />
-            <Route path="/insights" element={<Insights />} />
-            <Route path="/blog/:slug" element={<BlogDetail />} />
-            <Route path="/contact-us" element={<Contact />} />
-            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-            <Route path="/terms-and-condition" element={<TermsAndConditions />} />
-            <Route path="/bestWork" element={<BestWorkSection />} />
+        <>
+          <Assistant />
+          <Router>
+            <ScrollToTop />
+            <Navbar />
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/home" element={<Home />} />
+              <Route path="/about-us" element={<About />} />
+              <Route path="/our-work" element={<OurWork />} />
+              <Route path="/insights" element={<Insights />} />
+              <Route path="/blog/:slug" element={<BlogDetail />} />
+              <Route path="/contact-us" element={<Contact />} />
+              <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+              <Route path="/terms-and-condition" element={<TermsAndConditions />} />
+              <Route path="/bestWork" element={<BestWorkSection />} />
 
 
-          </Routes>
-          <Footer />
-        </Router>
+            </Routes>
+            <Footer />
+          </Router>
+        </>
       )}
     </div>
   )

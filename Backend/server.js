@@ -2,6 +2,7 @@ import express from "express";
 import nodemailer from "nodemailer";
 import cors from "cors";
 import dotenv from "dotenv";
+import { chatHandler } from "./api/chat.js";
 
 dotenv.config();
 
@@ -51,5 +52,14 @@ app.post("/contact", async (req, res) => {
     });
   }
 });
+
+// AI Chat endpoint
+app.post("/chat", chatHandler);
+
+// For Vercel deployment - remove app.listen() as Vercel handles this
+// const PORT = process.env.PORT || 5000;
+// app.listen(PORT, () => {
+//   console.log(`Server running on port ${PORT}`);
+// });
 
 export default app;
