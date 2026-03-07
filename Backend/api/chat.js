@@ -1,28 +1,32 @@
 const Groq = require('groq-sdk');
-const cors = require('cors');
-// require('dotenv').config(); // Remove this - Vercel handles env vars automatically
 const { getContextForAI } = require('../aiData.js');
 
 const groq = new Groq({
   apiKey: process.env.GROQ_API_KEY,
 });
 
-// Initialize CORS
-const corsMiddleware = cors({
-  origin: '*',
-  methods: ['GET', 'POST'],
-  credentials: true
-});
+// CORS headers helper
+function setCorsHeaders(res) {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  res.setHeader('Access-Control-Max-Age', '86400');
+}
 
 module.exports = async function handler(req, res) {
-  // Handle CORS
-  corsMiddleware(req, res, async () => {
-    try {
-      console.log('Chat API called with method:', req.method);
+  // Handle CORS preflight
+  setCorsHeaders(res);
+  
+  if (req.method === 'OPTIONS') {
+    return res.status(200).end();
+  }
 
-      if (req.method !== 'POST') {
-        return res.status(405).json({ error: 'Method not allowed' });
-      }
+  try {
+    console.log('Chat API called with method:', req.method);
+
+    if (req.method !== 'POST') {
+      return res.status(405).json({ error: 'Method not allowed' });
+    }
 
       const { message } = req.body;
       console.log('Received message:', message);
@@ -77,20 +81,19 @@ module.exports = async function handler(req, res) {
         });
       }
 
-      res.status(200).json({
-        success: true,
-        message: aiResponse
-      });
+    res.status(200).json({
+      success: true,
+      message: aiResponse
+    });
 
-    } catch (error) {
-      console.error('Chat API Error:', error);
-      console.error('Error details:', error.message);
-      console.error('Error stack:', error.stack);
-      res.status(500).json({
-        success: false,
-        error: error.message || 'Internal server error',
-        details: process.env.NODE_ENV === 'development' ? error.stack : undefined
-      });
-    }
-  });
+  } catch (error) {
+    console.error('Chat API Error:', error);
+    console.error('Error details:', error.message);
+    console.error('Error stack:', error.stack);
+    res.status(500).json({
+      success: false,
+      error: error.message || 'Internal server error',
+      details: process.env.NODE_ENV === 'development' ? error.stack : undefined
+    });
+  }
 }

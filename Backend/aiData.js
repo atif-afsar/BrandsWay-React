@@ -116,24 +116,9 @@ const companyData = {
     "Startups & Entrepreneurs"
   ]
 };
-  faqs: [
-    {
-      question: "What services do you offer?",
-      answer: "We offer branding, web development, UI/UX design, digital marketing, and more."
-    },
-    {
-      question: "How long does a typical project take?",
-      answer: "Project timelines vary based on complexity, but most projects take 4-12 weeks."
-    },
-    {
-      question: "Do you provide ongoing support?",
-      answer: "Yes, we offer maintenance and support packages for all our projects."
-    }
-  ]
-};
 
-module.exports = { companyData, getContextForAI };
-  // This function can be used to provide relevant context based on the user's query
+// This function can be used to provide relevant context based on the user's query
+function getContextForAI(query) {
   const lowerQuery = query.toLowerCase();
 
   let context = `You are a friendly AI assistant for BrandsWay, a creative agency in Aligarh, India. Keep responses short, friendly, and conversational. `;
@@ -151,15 +136,15 @@ module.exports = { companyData, getContextForAI };
   }
 
   if (lowerQuery.includes('work') || lowerQuery.includes('project') || lowerQuery.includes('portfolio')) {
-    context += `We've worked on brand identities, websites, mobile apps, and digital campaigns for various industries. `;
+    context += `We've worked on brand identities, websites, mobile apps, and digital campaigns for various industries. Our work includes: ${companyData.work.featuredProjects.join(', ')}. `;
   }
 
   if (lowerQuery.includes('process') || lowerQuery.includes('how') || lowerQuery.includes('workflow')) {
-    context += `Our process: Discovery → Strategy → Design → Development → Launch. `;
+    context += `Our process: ${companyData.process.join(' → ')}. `;
   }
 
   if (lowerQuery.includes('team') || lowerQuery.includes('people')) {
-    context += `Our talented team includes designers, developers, and marketing experts. `;
+    context += `${companyData.team.description} `;
   }
 
   if (lowerQuery.includes('price') || lowerQuery.includes('cost') || lowerQuery.includes('fee')) {
@@ -177,27 +162,6 @@ module.exports = { companyData, getContextForAI };
   context += `Be friendly, concise, and helpful. Use simple language. If needed, suggest contacting us at ${companyData.contact.email}. Keep responses under 100 words.`;
 
   return context;
-};
+}
 
 module.exports = { companyData, getContextForAI };
-
-  if (lowerQuery.includes('contact') || lowerQuery.includes('email') || lowerQuery.includes('phone')) {
-    context += `Contact us at ${companyData.contact.email} or ${companyData.contact.phone}. `;
-  }
-
-  if (lowerQuery.includes('work') || lowerQuery.includes('project')) {
-    context += `Our work includes: ${companyData.work.featuredProjects.join(', ')}. `;
-  }
-
-  if (lowerQuery.includes('process')) {
-    context += `Our process: ${companyData.process.join(', ')}. `;
-  }
-
-  if (lowerQuery.includes('team')) {
-    context += companyData.team.description;
-  }
-
-  context += `Always be helpful, professional, and provide accurate information based on the company data. If you don't have specific information, suggest contacting us directly.`;
-
-  return context;
-};

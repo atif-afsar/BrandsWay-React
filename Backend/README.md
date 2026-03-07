@@ -32,12 +32,19 @@ npm start
 
 ## Vercel Deployment
 
+This backend is configured as **serverless functions** for Vercel deployment.
+
 1. Push this code to GitHub
 2. Connect your GitHub repo to Vercel
-3. Add environment variables in Vercel dashboard:
-   - `EMAIL_USER`
-   - `EMAIL_PASS`
-   - `GROQ_API_KEY`
+3. **Important**: Add environment variables in Vercel dashboard (Settings → Environment Variables):
+   - `EMAIL_USER` - Your Gmail address
+   - `EMAIL_PASS` - Your Gmail app password (not regular password)
+   - `GROQ_API_KEY` - Your Groq API key
 4. Deploy!
 
-The `vercel.json` configuration will handle the serverless deployment automatically.
+The `vercel.json` configuration automatically routes:
+- `/contact` → `/api/contact.js`
+- `/chat` → `/api/chat.js`
+- `/test` → `/api/test.js`
+
+**Note**: The `server.js` file is only used for local development. Vercel uses the serverless functions in the `/api` folder.
