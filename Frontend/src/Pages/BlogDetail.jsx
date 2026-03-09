@@ -73,7 +73,7 @@ const BlogDetail = () => {
             <div className="flex flex-wrap items-center justify-center sm:justify-start gap-6 py-6 border-y border-gray-200/60 text-gray-500 font-medium text-xs sm:text-sm">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-full bg-gray-200 overflow-hidden border border-gray-100">
-                   <img src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${blog.author}`} alt="author" />
+                   <img src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${blog.author}`} alt="author" loading="lazy" sizes="40px" />
                 </div>
                 <span className="text-gray-900 font-bold">{blog.author}</span>
               </div>
@@ -97,6 +97,8 @@ const BlogDetail = () => {
             <img
               src={blog.image}
               alt={blog.title}
+              fetchpriority="high"
+              sizes="(max-width: 768px) 100vw, 100vw"
               className="w-full h-full object-cover hover:scale-105 transition-transform duration-[2s]"
             />
           </div>
@@ -202,7 +204,7 @@ const BlogDetail = () => {
                   className="group cursor-pointer"
                 >
                   <div className="aspect-[16/10] rounded-2xl overflow-hidden mb-6">
-                    <img src={post.image} alt={post.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                    <img src={post.image} alt={post.title} loading="lazy" sizes="(max-width: 768px) 100vw, 50vw" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
                   </div>
                   <span className="text-[#C61407] text-[10px] font-black uppercase tracking-widest mb-3 block">{post.category}</span>
                   <h4 className="text-xl font-bold group-hover:text-[#C61407] transition-colors mb-3">{post.title}</h4>

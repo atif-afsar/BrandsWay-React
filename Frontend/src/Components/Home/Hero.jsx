@@ -28,6 +28,8 @@ const Hero = ({ onSeeImpactClick }) => {
               key={i}
               src={url}
               alt={`Founder ${i + 1}`}
+              fetchpriority="high"
+              sizes="(max-width: 768px) 36px, 44px"
               whileHover={{ y: -4, scale: 1.1, zIndex: 10 }}
               className={`${dim} rounded-full border-2 border-white object-cover shadow-md relative`}
             />

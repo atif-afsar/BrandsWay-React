@@ -30,6 +30,7 @@ export default function QuoteSection() {
         <motion.span
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
           className="text-white/50 text-xs font-bold tracking-[0.3em] uppercase mb-6 block"
         >
           Leadership Message
@@ -67,6 +68,8 @@ export default function QuoteSection() {
                 <img
                     src="/about/yasir.png"
                     alt="Yasir Ali"
+                    loading="lazy"
+                    sizes="100px"
                     className="relative w-25 h-25 rounded-full object-cover shadow-[0_10px_40px_rgba(0,0,0,0.35)] transition duration-700 group-hover:scale-105"
                 />
                 </div>

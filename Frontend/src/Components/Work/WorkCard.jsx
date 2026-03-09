@@ -14,6 +14,8 @@ export default function ProjectCard({ project }) {
         <img 
           src={project.image} 
           alt={project.title}
+          loading="lazy"
+          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
         />
       </div>

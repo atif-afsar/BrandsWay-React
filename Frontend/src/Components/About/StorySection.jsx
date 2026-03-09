@@ -61,6 +61,8 @@ export default function StorySection() {
             <img
               src="/about/story.jpg" // replace with your image
               alt="Team working together"
+              loading="lazy"
+              sizes="(max-width: 768px) 100vw, 50vw"
               className="w-full h-full object-cover"
             />
           </div>

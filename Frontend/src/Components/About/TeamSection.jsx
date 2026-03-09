@@ -73,6 +73,7 @@ export default function TeamSection() {
             <motion.span 
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
               className="text-[#C61407] font-bold tracking-[0.2em] text-xs uppercase mb-4 block"
             >
               The Collective
@@ -107,6 +108,8 @@ export default function TeamSection() {
                     <img
                       src={member.img}
                       alt={member.name}
+                      loading="lazy"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
                       className="w-full h-full object-cover transition duration-500 group-hover:scale-105"
                     />
                     {/* Subtle red tint on hover only, no more gray default */}

@@ -26,6 +26,7 @@ const Word = ({ children, progress, range }) => {
         marginRight: '0.35em',
         marginBottom: '0.2em',
         willChange: 'opacity, transform, filter',
+        fontFamily: 'system-ui'
       }}
       className="select-none tracking-tight font-medium"
     >

@@ -5,6 +5,25 @@
     <link rel="icon" type="image/svg+xml" href="/logo/brandsway.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Brandsway</title>
+
+    <!-- Preconnect to external domains for faster loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://images.unsplash.com">
+    <link rel="preconnect" href="https://api.dicebear.com">
+
+    <!-- Preload critical fonts with non-blocking loading -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"></noscript>
+
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;1,500&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;1,500&display=swap"></noscript>
+
+    <!-- Preload hero image -->
+    <link rel="preload" href="/insights/insightsHero.png" as="image" type="image/png">
+
+    <!-- Preload logo -->
+    <link rel="preload" href="/logo/brandsway.png" as="image" type="image/png">
   </head>
   <body>
     <div id="root"></div>

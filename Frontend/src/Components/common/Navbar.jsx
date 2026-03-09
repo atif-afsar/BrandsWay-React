@@ -73,6 +73,8 @@ const Navbar = () => {
                 src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix"
                 className="w-5 h-5 rounded-full bg-white/20"
                 alt="avatar"
+                fetchpriority="high"
+                sizes="20px"
               />
               Book a Discovery Call
             </motion.a>
@@ -152,6 +154,8 @@ const Navbar = () => {
                     src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix"
                     className="w-6 h-6 rounded-full bg-white/20"
                     alt="avatar"
+                    fetchpriority="high"
+                    sizes="24px"
                   />
                    Book a Discovery Call
                 </motion.a>

@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, lazy, Suspense } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import { AnimatePresence } from 'framer-motion'
-import Home from './Pages/Home'
-import About from './Pages/About'
-import OurWork from './Pages/OurWork'
-import Insights from './Pages/Insights'
-import BlogDetail from './Pages/BlogDetail'
-import Contact from './Pages/Contact'
+import { AnimatePresence, LazyMotion, domAnimation } from 'framer-motion'
+const Home = lazy(() => import('./Pages/Home'))
+const About = lazy(() => import('./Pages/About'))
+const OurWork = lazy(() => import('./Pages/OurWork'))
+const Insights = lazy(() => import('./Pages/Insights'))
+const BlogDetail = lazy(() => import('./Pages/BlogDetail'))
+const Contact = lazy(() => import('./Pages/Contact'))
 import Navbar from './Components/common/Navbar'
 import Footer from './Components/common/Footer'
 import BrandsWayLoader from './Components/common/BrandsWayLoader'
@@ -14,7 +14,7 @@ import ScrollToTop from './Components/common/ScrollToTop'
 import TermsAndConditions from './Components/common/TermsAndConditions'
 import PrivacyPolicy from './Components/common/PrivacyPolicy'
 import BestWorkSection from './Components/BestWork/BestWorkSection'
-import Assistant from './Components/AI/Assistant'
+const Assistant = lazy(() => import('./Components/AI/Assistant'))
 // import Cursor from './Components/common/Cursor'
 
 const App = () => {
@@ -32,11 +32,14 @@ const App = () => {
       </AnimatePresence>
       
       {!loading && (
-        <>
-          <Assistant />
+        <LazyMotion features={domAnimation}>
+          <Suspense fallback={null}>
+            <Assistant />
+          </Suspense>
           <Router>
             <ScrollToTop />
             <Navbar />
+            <Suspense fallback={<BrandsWayLoader />}>
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/home" element={<Home />} />
@@ -51,9 +54,10 @@ const App = () => {
 
 
             </Routes>
+            </Suspense>
             <Footer />
           </Router>
-        </>
+        </LazyMotion>
       )}
     </div>
   )
