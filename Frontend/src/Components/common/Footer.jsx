@@ -102,7 +102,7 @@ const Footer = () => {
 
           {/* BRAND COLUMN */}
           <div className="sm:col-span-2 lg:col-span-5 flex flex-col gap-4 pb-6 sm:pb-0 border-b border-white/5 sm:border-none">
-            <img src="/logo/brandsway.png" alt="BrandsWay - Top Digital Marketing & PR Agency in Aligarh" loading="lazy" sizes="96px" className="h-24 w-24 " />
+            <img src="/logo/brandsway.png" alt="BrandsWay - Top Digital Marketing & PR Agency in Aligarh" loading="lazy" width="96" height="96" sizes="96px" className="h-24 w-24" />
             <p className="text-gray-400 text-sm leading-relaxed max-w-sm">
              We architect growth at scale — transforming ambitious brands into market leaders through precision strategy and pixel-perfect execution.
             </p>

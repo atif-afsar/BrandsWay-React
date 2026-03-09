@@ -136,16 +136,16 @@ const Assistant = () => {
             exit={{ scale: 0, opacity: 0 }}
             className="relative"
           >
-            {/* Pulsing Rings Animation */}
-            <div className="absolute inset-0 flex items-center justify-center">
+            {/* Pulsing Rings Animation - use scale transform to prevent layout shifts */}
+            <div className="absolute inset-0 flex items-center justify-center overflow-hidden">
               {[0, 1, 2].map((index) => (
                 <motion.div
                   key={index}
                   className="absolute rounded-full border-2 border-[#C61407]"
-                  initial={{ width: 64, height: 64, opacity: 0.6 }}
+                  style={{ width: 64, height: 64 }}
+                  initial={{ scale: 1, opacity: 0.6 }}
                   animate={{
-                    width: [64, 80, 64],
-                    height: [64, 80, 64],
+                    scale: [1, 1.25, 1],
                     opacity: [0.6, 0.3, 0.6],
                   }}
                   transition={{
