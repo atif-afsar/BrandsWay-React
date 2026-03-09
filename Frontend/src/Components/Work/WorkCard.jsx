@@ -13,7 +13,7 @@ export default function ProjectCard({ project }) {
       <div className="w-full h-64 overflow-hidden">
         <img 
           src={project.image} 
-          alt={project.title}
+          alt={`${project.title} - ${project.category} Portfolio by BrandsWay`}
           loading="lazy"
           sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"

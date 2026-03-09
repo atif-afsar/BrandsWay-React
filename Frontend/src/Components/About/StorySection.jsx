@@ -60,7 +60,7 @@ export default function StorySection() {
           <div className="rounded-2xl overflow-hidden shadow-xl">
             <img
               src="/about/story.jpg" // replace with your image
-              alt="Team working together"
+              alt="BrandsWay Team Collaborating on Digital Marketing Strategy"
               loading="lazy"
               sizes="(max-width: 768px) 100vw, 50vw"
               className="w-full h-full object-cover"

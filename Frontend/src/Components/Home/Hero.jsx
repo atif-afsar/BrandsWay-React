@@ -27,7 +27,7 @@ const Hero = ({ onSeeImpactClick }) => {
             <motion.img
               key={i}
               src={url}
-              alt={`Founder ${i + 1}`}
+              alt={`Happy Client and Founder ${i + 1} - BrandsWay Digital Marketing`}
               fetchpriority="high"
               sizes="(max-width: 768px) 36px, 44px"
               whileHover={{ y: -4, scale: 1.1, zIndex: 10 }}
@@ -146,7 +146,7 @@ const Hero = ({ onSeeImpactClick }) => {
           className="flex flex-wrap gap-3"
         >
           <Link to={"/contact-us"} className="flex items-center gap-2 bg-[#C61407] text-white px-5 py-3 rounded-full font-semibold text-sm hover:bg-red-800 transition-all shadow-lg shadow-red-200/60 active:scale-95">
-            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix" className="w-5 h-5 rounded-full bg-white/20" alt="" />
+            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix" className="w-5 h-5 rounded-full bg-white/20" alt="BrandsWay Proposal Expert Avatar" />
             Request Proposal
           </Link>
           <button onClick={onSeeImpactClick} className="px-6 py-3 rounded-full border-2 border-gray-900 text-gray-900 font-semibold text-sm hover:bg-gray-900 hover:text-white transition-all active:scale-95">

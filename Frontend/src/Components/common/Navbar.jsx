@@ -72,7 +72,7 @@ const Navbar = () => {
               <img
                 src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix"
                 className="w-5 h-5 rounded-full bg-white/20"
-                alt="avatar"
+                alt="BrandsWay Discovery Call Avatar"
                 fetchpriority="high"
                 sizes="20px"
               />

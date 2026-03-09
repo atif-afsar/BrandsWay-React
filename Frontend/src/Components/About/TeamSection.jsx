@@ -107,7 +107,7 @@ export default function TeamSection() {
                   <div className="relative rounded-[1.5rem] overflow-hidden aspect-[4/5] bg-gray-100">
                     <img
                       src={member.img}
-                      alt={member.name}
+                      alt={`${member.name} - ${member.role} at BrandsWay Digital Marketing Agency`}
                       loading="lazy"
                       sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
                       className="w-full h-full object-cover transition duration-500 group-hover:scale-105"

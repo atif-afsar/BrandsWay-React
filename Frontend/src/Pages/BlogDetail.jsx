@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { motion, useScroll, useSpring } from 'framer-motion';
 import { ArrowLeft, Clock, User, ChevronDown, Share2, Bookmark } from 'lucide-react';
 import { blogPosts } from '../utils/blogData';
@@ -37,6 +38,25 @@ const BlogDetail = () => {
 
   return (
     <div className="bg-[#FAF9F6] min-h-screen selection:bg-[#C61407] selection:text-white overflow-x-hidden">
+      <Helmet>
+        <title>{`${blog.title} | BrandsWay Insights`}</title>
+        <meta name="description" content={blog.excerpt || `Read more about ${blog.title} on BrandsWay Insights. Stay updated with the latest digital marketing and PR trends in Aligarh.`} />
+        <meta name="keywords" content={`${blog.category}, Digital Marketing Aligarh, BrandsWay Blog, PR Agency Aligarh`} />
+        
+        {/* Open Graph / Facebook */}
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content={`https://thebrandsway.com/insights/${slug}`} />
+        <meta property="og:title" content={blog.title} />
+        <meta property="og:description" content={blog.excerpt} />
+        <meta property="og:image" content={blog.image} />
+
+        {/* Twitter */}
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content={`https://thebrandsway.com/insights/${slug}`} />
+        <meta property="twitter:title" content={blog.title} />
+        <meta property="twitter:description" content={blog.excerpt} />
+        <meta property="twitter:image" content={blog.image} />
+      </Helmet>
       {/* Progress Bar */}
       <motion.div
         className="fixed top-0 left-0 right-0 h-1 bg-[#C61407] z-50 origin-left"
@@ -73,7 +93,7 @@ const BlogDetail = () => {
             <div className="flex flex-wrap items-center justify-center sm:justify-start gap-6 py-6 border-y border-gray-200/60 text-gray-500 font-medium text-xs sm:text-sm">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-full bg-gray-200 overflow-hidden border border-gray-100">
-                   <img src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${blog.author}`} alt="author" loading="lazy" sizes="40px" />
+                   <img src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${blog.author}`} alt={`${blog.author} - BrandsWay Digital Marketing Expert`} loading="lazy" sizes="40px" />
                 </div>
                 <span className="text-gray-900 font-bold">{blog.author}</span>
               </div>
@@ -96,7 +116,7 @@ const BlogDetail = () => {
           <div className="aspect-[21/9] rounded-2xl sm:rounded-[2rem] overflow-hidden shadow-2xl shadow-gray-200">
             <img
               src={blog.image}
-              alt={blog.title}
+              alt={`${blog.title} - Digital Marketing Insight by BrandsWay`}
               fetchpriority="high"
               sizes="(max-width: 768px) 100vw, 100vw"
               className="w-full h-full object-cover hover:scale-105 transition-transform duration-[2s]"

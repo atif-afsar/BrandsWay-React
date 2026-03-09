@@ -105,7 +105,7 @@ const BlogPage = () => {
                     
                     <img 
                       src={post.image} 
-                      alt={post.title} 
+                      alt={`${post.title} - ${post.category} Insight by BrandsWay`} 
                       loading="lazy"
                       sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       className="w-full h-full object-cover scale-105 group-hover:scale-100 group-hover:grayscale-0 grayscale-[0.3] transition-all duration-[1.5s] ease-out" 
@@ -160,7 +160,7 @@ const BlogPage = () => {
                     <div className="flex items-center gap-3">
                       <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#C61407] to-[#800000] overflow-hidden border border-white/10">
                         {post.author?.avatar && (
-                          <img src={post.author.avatar} alt="" loading="lazy" sizes="32px" className="w-full h-full object-cover" />
+                          <img src={post.author.avatar} alt={`${post.author?.name || "BrandsWay Team Member"} - Digital Marketing Strategist`} loading="lazy" sizes="32px" className="w-full h-full object-cover" />
                         )}
                       </div>
                       <div className="flex flex-col">
