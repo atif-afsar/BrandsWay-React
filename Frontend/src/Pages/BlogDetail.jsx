@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { motion, useScroll, useSpring } from 'framer-motion';
 import { ArrowLeft, Clock, User, ChevronDown, Share2, Bookmark } from 'lucide-react';
@@ -200,9 +200,11 @@ const BlogDetail = () => {
                   {blog.content.cta}
                 </p>
               </div>
+              <Link to="/contact-us" className="relative z-10">
               <button className="px-10 py-5 bg-[#C61407] text-white font-black uppercase tracking-widest rounded-full hover:scale-105 active:scale-95 transition-all shadow-xl shadow-red-900/20 whitespace-nowrap">
                 Get Started
               </button>
+              </Link>
             </div>
           </div>
         </section>
