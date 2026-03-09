@@ -197,7 +197,7 @@ const Home = () => {
     <div>
       <Helmet>
         <title>
-          Best PR & Digital Marketing Company in Aligarh | BrandsWay
+         The BrandsWay - Best PR & Digital Marketing Company in Aligarh | Website Development | SEO | SMO | Ads Campaign
         </title>
         <meta
           name="description"
