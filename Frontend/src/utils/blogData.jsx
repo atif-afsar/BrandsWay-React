@@ -1,3 +1,5 @@
+import { localSeoBlogPosts } from "./localSeoBlogPosts.js";
+
 export const blogPosts = [
   {
     id: 1,
@@ -429,5 +431,6 @@ export const blogPosts = [
       ],
       cta: "Looking for a marketing partner you can trust? Request your free consultation and discover how our expert team can design a data-driven strategy tailored to your business goals and growth ambitions."
     }
-  }
+  },
+  ...localSeoBlogPosts,
 ];

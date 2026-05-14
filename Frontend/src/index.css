@@ -1,6 +1,4 @@
 @import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;1,500&display=swap');
 @keyframes spin-slow {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
@@ -8,4 +6,14 @@
 
 .animate-spin-slow {
   animation: spin-slow 4s linear infinite;
+}
+
+/* Mobile: scroll attachment improves LCP/INP vs fixed hero backgrounds (Core Web Vitals). */
+.hero-bg-attach {
+  background-attachment: scroll;
+}
+@media (min-width: 768px) {
+  .hero-bg-attach {
+    background-attachment: fixed;
+  }
 }

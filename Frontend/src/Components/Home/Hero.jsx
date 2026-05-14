@@ -28,7 +28,7 @@ const Hero = ({ onSeeImpactClick }) => {
               key={i}
               src={url}
               alt={`Happy Client and Founder ${i + 1} - BrandsWay Digital Marketing`}
-              fetchpriority="high"
+              fetchPriority="high"
               sizes="(max-width: 768px) 36px, 44px"
               whileHover={{ y: -4, scale: 1.1, zIndex: 10 }}
               className={`${dim} rounded-full border-2 border-white object-cover shadow-md relative`}
@@ -56,14 +56,18 @@ const Hero = ({ onSeeImpactClick }) => {
 
   return (
     <section className="relative min-h-screen w-full flex flex-col font-['Poppins',_sans-serif] overflow-hidden">
+      {/* Primary H1 for SEO — visible headlines below are H2 for accessible hierarchy (single H1 rule). */}
+      <h1 className="sr-only">
+        The BrandsWay — digital marketing, PR, SEO, website development, Google Ads, and social media marketing agency in Aligarh, Uttar Pradesh
+      </h1>
 
       {/* ── Background layers ── */}
-      <div className="absolute inset-0 z-0"
+      <div
+        className="absolute inset-0 z-0 hero-bg-attach"
         style={{
           backgroundImage: 'url(/hero/bg2.jpg)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
-          backgroundAttachment: 'fixed'
         }}
       />
       <div className="absolute inset-0 z-0"
@@ -115,7 +119,7 @@ const Hero = ({ onSeeImpactClick }) => {
         </motion.span>
 
         {/* Headline */}
-        <motion.h1
+        <motion.h2
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.3 }}
@@ -126,7 +130,7 @@ const Hero = ({ onSeeImpactClick }) => {
           <span className="text-[#C61407]">Perfect Solution</span>
           <br />
           <span className="text-gray-500 font-medium text-[22px] sm:text-3xl">You Think – We Create</span>
-        </motion.h1>
+        </motion.h2>
 
         {/* Description */}
         <motion.p
@@ -260,7 +264,7 @@ const Hero = ({ onSeeImpactClick }) => {
             </motion.span>
 
             {/* Headline */}
-            <motion.h1
+            <motion.h2
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
@@ -273,7 +277,7 @@ const Hero = ({ onSeeImpactClick }) => {
               <span className="text-gray-500 font-semibold text-4xl xl:text-5xl">
                 You Think – We Create
               </span>
-            </motion.h1>
+            </motion.h2>
 
             {/* Sub-line */}
             <motion.p
@@ -326,6 +330,10 @@ const Hero = ({ onSeeImpactClick }) => {
 
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;900&display=swap');
+        /* Mobile: scroll attachment reduces jank vs fixed backgrounds (Core Web Vitals / INP). */
+        @media (max-width: 1023px) {
+          .hero-bg-attach { background-attachment: scroll !important; }
+        }
         .marquee-track {
           display: flex;
           width: max-content;

@@ -42,7 +42,7 @@ const InsightsSection = () => {
             <img 
               src="/insights/insightsHero.png"
               alt="The Future of Brand Identity in a Digital-First World - BrandsWay Insights"
-              fetchpriority="high"
+              fetchPriority="high"
               sizes="(max-width: 768px) 100vw, 50vw"
               className="w-full h-[350px] object-cover transition-transform duration-700 group-hover:scale-105"
             />

@@ -1,42 +1,28 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { homePageFaqData } from '../../data/homeFaq';
 
-const faqData = [
-  {
-    question: "How long does it take to see results?",
-    answer: "Most campaigns show measurable data within 30 days, with performance compounding over the first 90 days."
-  },
-  {
-    question: "Do you offer custom strategies?",
-    answer: "Every plan is built from the ground up, tailored specifically to your revenue goals, audience behavior, and market gaps."
-  },
-  {
-    question: "Which platforms do you manage?",
-    answer: "Our core expertise lies in Google Ads, Meta Ads, SEO, Conversion Rate Optimization, and performance-first funnels."
-  },
-  {
-    question: "Do you work with startups?",
-    answer: "Yes. We partner with both high-potential early-stage startups and established companies looking to scale aggressively."
-  },
-  {
-    question: "How do you measure success?",
-    answer: "We focus on the metrics that matter: ROI, ROAS, cost per acquisition, and net revenue growth."
-  }
-];
+const faqData = homePageFaqData;
 
 const FAQItem = ({ item, index, isOpen, toggleOpen }) => {
+  const panelId = `home-faq-panel-${index}`;
+  const triggerId = `home-faq-trigger-${index}`;
   return (
     <motion.div 
-      initial={{ opacity: 0, y: 15 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ delay: index * 0.1, duration: 0.5 }}
-      className="border-b border-gray-100"
+    initial={{ opacity: 0, y: 15 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true }}
+    transition={{ delay: index * 0.1, duration: 0.5 }}
+    className="border-b border-gray-100"
+  >
+    <button
+      type="button"
+      onClick={toggleOpen}
+      className="w-full flex items-center justify-between py-7 text-left group"
+      aria-expanded={isOpen}
+      aria-controls={panelId}
+      id={triggerId}
     >
-      <button
-        onClick={toggleOpen}
-        className="w-full flex items-center justify-between py-7 text-left group"
-      >
         <span className={`text-lg md:text-xl font-medium tracking-tight transition-all duration-300 ${isOpen ? 'text-[#C61407]' : 'text-black group-hover:text-[#C61407] group-hover:pl-1'}`}>
           {item.question}
         </span>
@@ -56,6 +42,9 @@ const FAQItem = ({ item, index, isOpen, toggleOpen }) => {
       <AnimatePresence initial={false}>
         {isOpen && (
           <motion.div
+            id={panelId}
+            role="region"
+            aria-labelledby={triggerId}
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}

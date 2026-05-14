@@ -1,32 +1,37 @@
 import React, { useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 import {
   Code, PenTool, Layout, Share2, Search, Mail, Smartphone, CreditCard
 } from 'lucide-react';
 
 const services = [
-  { title: "Web Development", desc: "High-performance, scalable websites built with modern frameworks.", icon: Code, tag: "01" },
-  { title: "Content Creation", desc: "Compelling storytelling that captures attention and drives engagement.", icon: PenTool, tag: "02" },
-  { title: "Graphic Designing", desc: "Visual identities that define your brand and stand out in the noise.", icon: Layout, tag: "03" },
-  { title: "Social Media", desc: "Strategic management to grow your community across all platforms.", icon: Share2, tag: "04" },
-  { title: "SEO Services", desc: "Data-driven optimization to dominate search engine rankings.", icon: Search, tag: "05" },
-  { title: "Email Marketing", desc: "Personalized campaigns that convert leads into loyal customers.", icon: Mail, tag: "06" },
-  { title: "App Development", desc: "Intuitive mobile experiences designed for iOS and Android.", icon: Smartphone, tag: "07" },
-  { title: "Payment Solutions", desc: "Seamless gateway integrations for secure global transactions.", icon: CreditCard, tag: "08" },
+  { title: "Web Development", desc: "High-performance, scalable websites built with modern frameworks.", icon: Code, tag: "01", to: "/website-development-company-aligarh" },
+  { title: "Content Creation", desc: "Compelling storytelling that captures attention and drives engagement.", icon: PenTool, tag: "02", to: "/digital-marketing-agency-aligarh" },
+  { title: "Graphic Designing", desc: "Visual identities that define your brand and stand out in the noise.", icon: Layout, tag: "03", to: "/branding-agency-aligarh" },
+  { title: "Social Media", desc: "Strategic management to grow your community across all platforms.", icon: Share2, tag: "04", to: "/social-media-marketing-aligarh" },
+  { title: "SEO Services", desc: "Data-driven optimization to dominate search engine rankings.", icon: Search, tag: "05", to: "/seo-company-aligarh" },
+  { title: "Email Marketing", desc: "Personalized campaigns that convert leads into loyal customers.", icon: Mail, tag: "06", to: "/digital-marketing-agency-aligarh" },
+  { title: "App Development", desc: "Intuitive mobile experiences designed for iOS and Android.", icon: Smartphone, tag: "07", to: "/website-development-company-aligarh" },
+  { title: "Payment Solutions", desc: "Seamless gateway integrations for secure global transactions.", icon: CreditCard, tag: "08", to: "/digital-marketing-agency-aligarh" },
 ];
 
 const ServiceCard = ({ service, index }) => {
   const Icon = service.icon;
   return (
+    <Link
+      to={service.to}
+      className="group relative shrink-0 rounded-3xl block w-full sm:w-[300px] md:w-[280px] h-auto min-h-[200px] sm:h-[340px] md:h-[320px] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C61407] focus-visible:ring-offset-2"
+      aria-label={`${service.title} — learn more`}
+    >
     <motion.div
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 0.5, delay: index * 0.06 }}
       whileHover={{ y: -8 }}
-      className="relative shrink-0 rounded-3xl flex flex-col justify-between group cursor-pointer overflow-hidden
-                 w-full sm:w-[300px] md:w-[280px]
-                 h-auto min-h-[200px] sm:h-[340px] md:h-[320px]"
+      className="relative shrink-0 rounded-3xl flex flex-col justify-between overflow-hidden
+                 w-full h-full min-h-[200px] sm:h-[340px] md:h-[320px]"
       style={{
         background: 'white',
         border: '1px solid rgba(0,0,0,0.07)',
@@ -95,6 +100,7 @@ const ServiceCard = ({ service, index }) => {
         </div>
       </div>
     </motion.div>
+    </Link>
   );
 };
 

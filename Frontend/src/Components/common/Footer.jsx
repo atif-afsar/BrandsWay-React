@@ -70,14 +70,13 @@ const FooterSection = ({ title, links }) => {
 
 const Footer = () => {
   const services = [
-    { name: "Digital Marketing", href: "#" },
-    { name: "Web Development", href: "#" },
-    { name: "Graphic Design", href: "#" },
-    { name: "Content Creation", href: "#" },
-    { name: "Social Media Strategy", href: "#" },
-
-   
-    
+    { name: "Digital Marketing · Aligarh", href: "/digital-marketing-agency-aligarh" },
+    { name: "SEO Company · Aligarh", href: "/seo-company-aligarh" },
+    { name: "Web Development · Aligarh", href: "/website-development-company-aligarh" },
+    { name: "Social Media Marketing", href: "/social-media-marketing-aligarh" },
+    { name: "Google Ads", href: "/google-ads-agency-aligarh" },
+    { name: "Branding Agency", href: "/branding-agency-aligarh" },
+    { name: "PR Agency · Aligarh", href: "/pr-agency-aligarh" },
   ];
 
   const company = [
