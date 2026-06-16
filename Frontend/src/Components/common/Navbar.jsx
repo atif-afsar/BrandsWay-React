@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
+import { telHref } from '../../seo/business.js';
 
 const links = ['Home', 'About Us', 'Our Work', 'Insights', 'Contact Us'];
 
@@ -64,7 +65,7 @@ const Navbar = () => {
 
             {/* Desktop CTA */}
             <motion.a
-              href="tel:+917302988037"
+              href={telHref()}
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
               className="hidden md:flex items-center gap-2 bg-[#C61407] text-white px-4 py-1.5 rounded-full text-[13px] font-semibold hover:bg-red-700 transition-colors shadow-sm shadow-red-200"
@@ -144,7 +145,7 @@ const Navbar = () => {
 
                 {/* Mobile CTA */}
                 <motion.a
-                  href="tel:+917302988037"
+                  href={telHref()}
                   initial={{ opacity: 0, y: 8 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.28, duration: 0.2 }}

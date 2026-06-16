@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { MapPin, Mail, Phone, Calendar } from 'lucide-react';
+import { BUSINESS, telHref } from '../../seo/business.js';
 
 const ContactSidebar = () => {
   return (
@@ -28,7 +29,8 @@ const ContactSidebar = () => {
             <h4 className="font-bold text-sm">Contact</h4>
           </div>
           <p className="text-sm text-gray-500 leading-relaxed">
-           brandswaying@gmail.com<br />+91-7302988039
+           brandswaying@gmail.com<br />
+           <a href={telHref()} className="hover:text-[#C61407] transition-colors">{BUSINESS.telephoneDisplay}</a>
           </p>
         </div>
       </div>
@@ -58,7 +60,7 @@ const ContactSidebar = () => {
           <p className="text-white/70 text-xs">Book a 15-minute discovery call with our leads.</p>
         </div>
         <motion.a 
-         href="tel:+917302988037"
+         href={telHref()}
           whileHover={{ y: -2 }}
           className="bg-white text-[#C61407] px-6 py-3 rounded-xl font-bold text-xs whitespace-nowrap"
         >

@@ -2,14 +2,14 @@ import React, { memo } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Phone, Clock, MapPin, MessageCircle, Star } from "lucide-react";
-import { BUSINESS, GBP_ALIGNED_REVIEWS } from "../../seo/business.js";
+import { BUSINESS, GBP_ALIGNED_REVIEWS, telHref, waHref } from "../../seo/business.js";
 
 /**
  * Google Business Profile–supporting block: NAP, hours, map, reviews, WhatsApp + tel CTAs.
  * Visible address + click-to-call patterns improve local trust and user signals.
  */
 function HomeLocalTrustGBPComponent() {
-  const wa = `https://wa.me/${BUSINESS.whatsappE164}`;
+  const wa = waHref();
   const mapSrc =
     "https://maps.google.com/maps?q=IT+Plaza%2C+Abdullah+Road%2C+Aligarh%2C+Uttar+Pradesh+202001%2C+India&hl=en&z=16&output=embed";
 
@@ -35,6 +35,12 @@ function HomeLocalTrustGBPComponent() {
                 </span>
               </p>
               <p className="text-gray-600 flex gap-2 items-center mt-4">
+                <Phone className="w-5 h-5 text-[#C61407]" aria-hidden />
+                <a href={telHref()} className="hover:text-[#C61407] transition-colors font-medium">
+                  {BUSINESS.telephoneDisplay}
+                </a>
+              </p>
+              <p className="text-gray-600 flex gap-2 items-center mt-4">
                 <Clock className="w-5 h-5 text-[#C61407]" aria-hidden />
                 <span>Mon–Sat · 10:00–19:00 (IST)</span>
               </p>
@@ -42,9 +48,9 @@ function HomeLocalTrustGBPComponent() {
 
             <div className="flex flex-wrap gap-3">
               <a
-                href={`tel:${BUSINESS.telephone.replace(/\s/g, "")}`}
+                href={telHref()}
                 className="inline-flex items-center gap-2 rounded-full bg-[#080C12] text-white px-6 py-3 text-sm font-bold hover:bg-black transition-colors"
-                aria-label={`Call The BrandsWay at ${BUSINESS.telephone}`}
+                aria-label={`Call The BrandsWay at ${BUSINESS.telephoneDisplay}`}
               >
                 <Phone className="w-4 h-4" aria-hidden />
                 Call now

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { homePageFaqData } from '../../data/homeFaq';
+import { telHref } from '../../seo/business.js';
 
 const faqData = homePageFaqData;
 
@@ -125,7 +126,7 @@ const FAQSection = () => {
             Still have questions?
           </motion.p>
           
-          <motion.a href='tel:+917302988037'
+          <motion.a href={telHref()}
             whileHover={{ 
               backgroundColor: "#C61407",
               scale: 1.05,

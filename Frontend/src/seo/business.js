@@ -13,7 +13,10 @@ export const BUSINESS = {
   url: SITE_ORIGIN,
   logo: `${SITE_ORIGIN}/logo/brandsway.png`,
   image: `${SITE_ORIGIN}/hero/bg2.jpg`,
+  /** E.164 for tel: links and JSON-LD */
   telephone: "+917302988037",
+  /** Public display format (GBP / site copy) */
+  telephoneDisplay: "073029 88037",
   whatsappE164: "917302988037",
   address: {
     streetAddress: "IT Plaza, Abdullah Road",
@@ -72,3 +75,9 @@ export const GBP_ALIGNED_REVIEWS = [
 ];
 
 export const DEFAULT_OG_IMAGE = BUSINESS.image;
+
+/** Dialable tel: URI */
+export const telHref = () => `tel:${BUSINESS.telephone.replace(/\s/g, "")}`;
+
+/** WhatsApp deep link */
+export const waHref = () => `https://wa.me/${BUSINESS.whatsappE164}`;

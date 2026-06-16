@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { telHref } from '../../seo/business.js';
 
 // Importing the components built in previous steps
 import SectionHeader from './SectionHeader';
@@ -66,7 +67,7 @@ const BestWorkSection = () => {
         <h3 className="text-white text-3xl md:text-5xl font-medium font-black uppercase tracking-tighter mb-8">
           Have a Project <span className="text-[#C61407]">In Mind?</span>
         </h3>
-        <motion.a href='tel:+917302988037' className="bg-transparent border border-white/20 hover:border-[#C61407] text-white px-10 py-4 rounded-full uppercase tracking-widest text-xs font-bold transition-all duration-500 hover:shadow-[0_0_30px_rgba(198,20,7,0.2)]">
+        <motion.a href={telHref()} className="bg-transparent border border-white/20 hover:border-[#C61407] text-white px-10 py-4 rounded-full uppercase tracking-widest text-xs font-bold transition-all duration-500 hover:shadow-[0_0_30px_rgba(198,20,7,0.2)]">
           Let's Talk
         </motion.a>
       </motion.footer>

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaTwitter, FaLinkedin, FaInstagram, FaFacebook } from 'react-icons/fa';
+import { BUSINESS, telHref } from '../../seo/business.js';
 
 const FooterLink = ({ href, children }) => (
   <li>
@@ -104,6 +105,11 @@ const Footer = () => {
             <img src="/logo/brandsway.png" alt="BrandsWay - Top Digital Marketing & PR Agency in Aligarh" loading="lazy" width="96" height="96" sizes="96px" className="h-24 w-24" />
             <p className="text-gray-400 text-sm leading-relaxed max-w-sm">
              We architect growth at scale — transforming ambitious brands into market leaders through precision strategy and pixel-perfect execution.
+            </p>
+            <p className="text-gray-400 text-sm">
+              <a href={telHref()} className="hover:text-[#C61407] transition-colors font-medium">
+                {BUSINESS.telephoneDisplay}
+              </a>
             </p>
 
             {/* Socials */}

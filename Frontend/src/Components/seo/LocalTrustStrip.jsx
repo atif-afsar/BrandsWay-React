@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Phone, Clock, MapPin, Star } from "lucide-react";
-import { BUSINESS } from "../../seo/business.js";
+import { BUSINESS, telHref } from "../../seo/business.js";
 
 /** Visible testimonials — copy aligns with optional Review JSON-LD on the homepage graph. */
 const TESTIMONIALS = [
@@ -54,8 +54,8 @@ const LocalTrustStrip = () => {
             </p>
             <p className="flex items-center gap-3">
               <Phone className="w-5 h-5 text-[#C61407]" aria-hidden />
-              <a href={`tel:${BUSINESS.telephone}`} className="hover:text-white transition-colors">
-                {BUSINESS.telephone.replace("+91", "+91 ")}
+              <a href={telHref()} className="hover:text-white transition-colors">
+                {BUSINESS.telephoneDisplay}
               </a>
             </p>
             <p className="flex items-center gap-3">
@@ -66,7 +66,7 @@ const LocalTrustStrip = () => {
 
           <div className="flex flex-wrap gap-3">
             <a
-              href={`tel:${BUSINESS.telephone}`}
+              href={telHref()}
               className="inline-flex items-center justify-center rounded-full bg-[#C61407] px-6 py-3 text-sm font-semibold hover:bg-red-700 transition-colors"
             >
               Click to call

@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { ChevronDown, Phone, MapPin, ArrowRight } from "lucide-react";
 import { SEOHead } from "../seo/SEOHead";
 import { LANDING_PAGES } from "../data/landingPages.data";
-import { BUSINESS, SITE_ORIGIN, GBP_ALIGNED_REVIEWS } from "../seo/business.js";
+import { BUSINESS, SITE_ORIGIN, GBP_ALIGNED_REVIEWS, telHref } from "../seo/business.js";
 import {
   organizationSchema,
   websiteSchema,
@@ -209,9 +209,9 @@ const SeoServiceLanding = () => {
                   <MapPin className="w-4 h-4 text-[#C61407]" aria-hidden />
                   IT Plaza, Abdullah Road, Aligarh
                 </span>
-                <a href="tel:+917302988037" className="inline-flex items-center gap-2 hover:text-white">
+                <a href={telHref()} className="inline-flex items-center gap-2 hover:text-white">
                   <Phone className="w-4 h-4 text-[#C61407]" aria-hidden />
-                  +91 73029 88037
+                  {BUSINESS.telephoneDisplay}
                 </a>
               </div>
             </div>
