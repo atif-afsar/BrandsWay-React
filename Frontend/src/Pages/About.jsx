@@ -3,7 +3,7 @@ import AboutHero from "../Components/About/AboutHero";
 import StorySection from "../Components/About/StorySection";
 import CorePrinciples from "../Components/About/CorePrinciples";
 import QuoteSection from "../Components/About/QuoteSection";
-const TeamSection = lazy(() => import("../Components/About/TeamSection"));
+const AboutExpertiseSection = lazy(() => import("../Components/About/AboutExpertiseSection"));
 import AboutCTA from "../Components/About/AboutCta";
 import useInView from "../hooks/useInView";
 import { SEOHead } from "../seo/SEOHead";
@@ -11,7 +11,7 @@ import { organizationSchema, websiteSchema, localBusinessSchema, breadcrumbSchem
 
 const About = () => {
   const storySectionRef = useRef(null);
-  const [teamTriggerRef, teamInView] = useInView();
+  const [expertiseTriggerRef, expertiseInView] = useInView();
 
   const scrollToStory = () => {
     storySectionRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -37,9 +37,9 @@ const About = () => {
     <div>
       <SEOHead
         title="About The BrandsWay | PR & Digital Marketing Agency in Aligarh"
-        description="Meet The BrandsWay — the team behind Aligarh’s growth-focused PR, SEO, ads, and web work. Our story, principles, and how we partner with ambitious brands."
+        description="Learn how The BrandsWay delivers PR, SEO, paid media, and web growth for Aligarh brands — our story, principles, expertise, and partnership approach."
         canonicalPath="/about-us"
-        keywords="about The BrandsWay, PR agency Aligarh, digital marketing team Aligarh"
+        keywords="about The BrandsWay, PR agency Aligarh, digital marketing agency Aligarh, SEO company Aligarh"
         jsonLd={[graphLd]}
       />
       <AboutHero onLearnStoryClick={scrollToStory} />
@@ -48,10 +48,10 @@ const About = () => {
       </div>
       <CorePrinciples />
       <QuoteSection />
-      <div ref={teamTriggerRef}>
-        {teamInView && (
+      <div ref={expertiseTriggerRef}>
+        {expertiseInView && (
           <Suspense fallback={<div className="h-64 bg-gray-100 animate-pulse flex items-center justify-center">Loading...</div>}>
-            <TeamSection />
+            <AboutExpertiseSection />
           </Suspense>
         )}
       </div>
