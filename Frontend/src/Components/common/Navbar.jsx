@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useLenis } from 'lenis/react';
 import { telHref } from '../../seo/business.js';
 
 const links = ['Home', 'About Us', 'Our Work', 'Insights', 'Contact Us'];
@@ -8,12 +9,21 @@ const links = ['Home', 'About Us', 'Our Work', 'Insights', 'Contact Us'];
 const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const lenis = useLenis();
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener('scroll', onScroll);
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
+    if (!lenis) return undefined;
+
+    const onScroll = (instance) => {
+      const next = instance.scroll > 20;
+      setScrolled((prev) => (prev === next ? prev : next));
+    };
+
+    lenis.on("scroll", onScroll);
+    onScroll(lenis);
+
+    return () => lenis.off("scroll", onScroll);
+  }, [lenis]);
 
   useEffect(() => {
     const onResize = () => { if (window.innerWidth >= 768) setOpen(false); };

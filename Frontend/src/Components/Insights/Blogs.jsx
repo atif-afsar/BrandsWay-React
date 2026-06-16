@@ -58,6 +58,7 @@ const BlogPage = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className="flex flex-nowrap overflow-x-auto lg:flex-wrap gap-2 pb-4 lg:pb-0 scrollbar-hide no-scrollbar"
+            data-lenis-prevent-horizontal
           >
             {categories.map((cat) => (
               <button

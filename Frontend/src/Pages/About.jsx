@@ -6,16 +6,14 @@ import QuoteSection from "../Components/About/QuoteSection";
 const AboutExpertiseSection = lazy(() => import("../Components/About/AboutExpertiseSection"));
 import AboutCTA from "../Components/About/AboutCta";
 import useInView from "../hooks/useInView";
+import useSmoothScrollTo from "../hooks/useSmoothScrollTo";
 import { SEOHead } from "../seo/SEOHead";
 import { organizationSchema, websiteSchema, localBusinessSchema, breadcrumbSchema } from "../seo/schemaBuilders.js";
 
 const About = () => {
   const storySectionRef = useRef(null);
   const [expertiseTriggerRef, expertiseInView] = useInView();
-
-  const scrollToStory = () => {
-    storySectionRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
-  };
+  const scrollToStory = useSmoothScrollTo();
 
   const graphLd = useMemo(
     () => ({
@@ -42,7 +40,7 @@ const About = () => {
         keywords="about The BrandsWay, PR agency Aligarh, digital marketing agency Aligarh, SEO company Aligarh"
         jsonLd={[graphLd]}
       />
-      <AboutHero onLearnStoryClick={scrollToStory} />
+      <AboutHero onLearnStoryClick={() => scrollToStory(storySectionRef)} />
       <div ref={storySectionRef}>
         <StorySection />
       </div>

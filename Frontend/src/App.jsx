@@ -6,6 +6,7 @@ import Navbar from "./Components/common/Navbar";
 import Footer from "./Components/common/Footer";
 import BrandsWayLoader from "./Components/common/BrandsWayLoader";
 import ScrollToTop from "./Components/common/ScrollToTop";
+import SmoothScroll from "./Components/common/SmoothScroll";
 import TermsAndConditions from "./Components/common/TermsAndConditions";
 import PrivacyPolicy from "./Components/common/PrivacyPolicy";
 import BestWorkSection from "./Components/BestWork/BestWorkSection";
@@ -37,28 +38,30 @@ const App = () => {
           <Suspense fallback={null}>
             <Assistant />
           </Suspense>
-          <Router>
-            <ScrollToTop />
-            <Navbar />
-            <Suspense fallback={<BrandsWayLoader />}>
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/home" element={<Home />} />
-                <Route path="/about-us" element={<About />} />
-                <Route path="/our-work" element={<OurWork />} />
-                <Route path="/insights" element={<Insights />} />
-                <Route path="/blog/:slug" element={<BlogDetail />} />
-                <Route path="/contact-us" element={<Contact />} />
-                {LANDING_PAGE_ORDER.map((path) => (
-                  <Route key={path} path={path} element={<SeoServiceLanding />} />
-                ))}
-                <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-                <Route path="/terms-and-condition" element={<TermsAndConditions />} />
-                <Route path="/bestWork" element={<BestWorkSection />} />
-              </Routes>
-            </Suspense>
-            <Footer />
-          </Router>
+          <SmoothScroll>
+            <Router>
+              <ScrollToTop />
+              <Navbar />
+              <Suspense fallback={<BrandsWayLoader />}>
+                <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/home" element={<Home />} />
+                  <Route path="/about-us" element={<About />} />
+                  <Route path="/our-work" element={<OurWork />} />
+                  <Route path="/insights" element={<Insights />} />
+                  <Route path="/blog/:slug" element={<BlogDetail />} />
+                  <Route path="/contact-us" element={<Contact />} />
+                  {LANDING_PAGE_ORDER.map((path) => (
+                    <Route key={path} path={path} element={<SeoServiceLanding />} />
+                  ))}
+                  <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+                  <Route path="/terms-and-condition" element={<TermsAndConditions />} />
+                  <Route path="/bestWork" element={<BestWorkSection />} />
+                </Routes>
+              </Suspense>
+              <Footer />
+            </Router>
+          </SmoothScroll>
         </LazyMotion>
       )}
     </div>

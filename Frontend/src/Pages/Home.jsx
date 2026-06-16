@@ -24,16 +24,14 @@ import ScrollFillSection from "./ScrollFillSection";
 const HomeLocalGrowth = lazy(() => import("../Components/Home/HomeLocalGrowth").then((m) => ({ default: m.HomeLocalGrowth })));
 const HomeLocalTrustGBP = lazy(() => import("../Components/Home/HomeLocalTrustGBP").then((m) => ({ default: m.HomeLocalTrustGBP })));
 import useInView from "../hooks/useInView";
+import useSmoothScrollTo from "../hooks/useSmoothScrollTo";
 
 const Home = () => {
   const bestWorkRef = useRef(null);
+  const scrollToBestWork = useSmoothScrollTo();
   const [bestWorkTriggerRef, bestWorkInView] = useInView();
   const [localSeoRef, localSeoInView] = useInView();
   const [localTrustRef, localTrustInView] = useInView();
-
-  const scrollToBestWork = () => {
-    bestWorkRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
-  };
 
   const homeUrl = SITE_ORIGIN + "/";
 
@@ -69,7 +67,7 @@ const Home = () => {
         keywords={HOME_META.keywords}
         jsonLd={[homeJsonLd]}
       />
-      <Hero onSeeImpactClick={scrollToBestWork} />
+      <Hero onSeeImpactClick={() => scrollToBestWork(bestWorkRef)} />
       <ServicesSection />
       <ScrollFillSection />
       <ProcessSection />

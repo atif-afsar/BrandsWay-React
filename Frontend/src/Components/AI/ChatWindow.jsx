@@ -6,6 +6,7 @@ const ChatWindow = forwardRef(({ messages, isLoading }, ref) => {
   return (
     <div 
       ref={ref}
+      data-lenis-prevent
       className="flex-1 overflow-y-auto px-3 py-4 md:px-4 md:py-6 bg-gradient-to-b from-gray-50 to-white scrollbar-thin scrollbar-thumb-red-200 scrollbar-track-transparent"
       style={{ scrollbarWidth: 'thin' }}
     >

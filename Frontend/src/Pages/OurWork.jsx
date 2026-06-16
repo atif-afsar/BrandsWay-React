@@ -4,13 +4,11 @@ import ProjectsSection from "../Components/Work/WorkSection";
 import WorkCTA from "../Components/Work/WorkCta";
 import { SEOHead } from "../seo/SEOHead";
 import { organizationSchema, websiteSchema, localBusinessSchema, breadcrumbSchema } from "../seo/schemaBuilders.js";
+import useSmoothScrollTo from "../hooks/useSmoothScrollTo";
 
 const OurWork = () => {
   const workSectionRef = useRef(null);
-
-  const scrollToWorkSection = () => {
-    workSectionRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
-  };
+  const scrollToWorkSection = useSmoothScrollTo();
 
   const graphLd = useMemo(
     () => ({
@@ -37,7 +35,7 @@ const OurWork = () => {
         keywords="BrandsWay portfolio, digital marketing case studies Aligarh, PR campaigns Aligarh"
         jsonLd={[graphLd]}
       />
-      <WorkHero onLatestCaseStudiesClick={scrollToWorkSection} />
+      <WorkHero onLatestCaseStudiesClick={() => scrollToWorkSection(workSectionRef)} />
       <div ref={workSectionRef}>
         <ProjectsSection />
       </div>
