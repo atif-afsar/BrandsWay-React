@@ -1,7 +1,23 @@
 @import "tailwindcss";
 
+/* Lenis controls desktop wheel; mobile uses native momentum scroll */
 html {
   scroll-behavior: auto !important;
+}
+
+@media (max-width: 767px), (pointer: coarse) {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Clearance for fixed navbar on in-page anchor jumps */
+  [id] {
+    scroll-margin-top: 5.5rem;
+  }
 }
 @keyframes spin-slow {
   0% { transform: rotate(0deg); }

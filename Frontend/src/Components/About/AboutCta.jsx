@@ -28,12 +28,11 @@ const AboutCTA = () => {
     <section className="relative w-full py-32 md:py-40 px-6 overflow-hidden bg-[#fdfdfd]">
       
       {/* 1. Background Image with Fixed Parallax */}
-         <div className="absolute inset-0 z-0"
+         <div className="absolute inset-0 z-0 hero-bg-attach"
         style={{
           backgroundImage: 'url(/hero/bg2.jpg)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
-          backgroundAttachment: 'fixed'
         }}
       />
       <div className="absolute inset-0 z-0"

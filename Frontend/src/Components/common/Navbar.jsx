@@ -12,17 +12,27 @@ const Navbar = () => {
   const lenis = useLenis();
 
   useEffect(() => {
-    if (!lenis) return undefined;
+    if (lenis) {
+      const onScroll = (instance) => {
+        const next = instance.scroll > 20;
+        setScrolled((prev) => (prev === next ? prev : next));
+      };
 
-    const onScroll = (instance) => {
-      const next = instance.scroll > 20;
+      lenis.on("scroll", onScroll);
+      onScroll(lenis);
+
+      return () => lenis.off("scroll", onScroll);
+    }
+
+    const onWindowScroll = () => {
+      const next = window.scrollY > 20;
       setScrolled((prev) => (prev === next ? prev : next));
     };
 
-    lenis.on("scroll", onScroll);
-    onScroll(lenis);
+    window.addEventListener("scroll", onWindowScroll, { passive: true });
+    onWindowScroll();
 
-    return () => lenis.off("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onWindowScroll);
   }, [lenis]);
 
   useEffect(() => {

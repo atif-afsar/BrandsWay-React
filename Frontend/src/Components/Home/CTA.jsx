@@ -27,12 +27,11 @@ const CTASection = () => {
   return (
     <section className="relative w-full py-36 md:py-48 px-6 overflow-hidden">
       {/* Background */}
-      <div className="absolute inset-0 z-0"
+      <div className="absolute inset-0 z-0 hero-bg-attach"
         style={{
           backgroundImage: 'url(/hero/bg2.jpg)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
-          backgroundAttachment: 'fixed'
         }}
       />
       <div className="absolute inset-0 z-0"

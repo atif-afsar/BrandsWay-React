@@ -1,9 +1,10 @@
 import { useCallback } from "react";
 import { useLenis } from "lenis/react";
 import { SCROLL_OFFSET } from "../config/lenisOptions.js";
+import { nativeScrollTo } from "../utils/nativeScrollTo.js";
 
 /**
- * Scroll to a ref or element via Lenis; falls back to native smooth scroll.
+ * Scroll to a ref or element via Lenis (desktop) or native smooth scroll (mobile).
  */
 export default function useSmoothScrollTo(offset = SCROLL_OFFSET) {
   const lenis = useLenis();
@@ -18,7 +19,7 @@ export default function useSmoothScrollTo(offset = SCROLL_OFFSET) {
         return;
       }
 
-      el.scrollIntoView({ behavior: "smooth", block: "start" });
+      nativeScrollTo(el, offset);
     },
     [lenis, offset],
   );

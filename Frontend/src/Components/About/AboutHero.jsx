@@ -11,12 +11,11 @@ const AboutHero = ({ onLearnStoryClick }) => {
         initial={{ scale: 1.1 }}
         animate={{ scale: 1 }}
         transition={{ duration: 1.5, ease: "easeOut" }}
-        className="absolute inset-0 z-0"
+        className="absolute inset-0 z-0 hero-bg-attach"
         style={{
           backgroundImage: 'url(/about/abouthero.png)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
-          backgroundAttachment: 'fixed'
         }}
       />
       

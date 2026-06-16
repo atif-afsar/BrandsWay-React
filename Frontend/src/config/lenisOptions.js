@@ -1,15 +1,11 @@
-/** Shared Lenis config — syncTouch keeps momentum smooth on mobile swipe. */
-export const LENIS_OPTIONS = {
-  lerp: 0.08,
-  duration: 1.15,
+/** Desktop-only Lenis — touch devices use native momentum scroll (no syncTouch jank). */
+export const DESKTOP_LENIS_OPTIONS = {
+  lerp: 0.1,
+  duration: 1.2,
   smoothWheel: true,
-  syncTouch: true,
-  syncTouchLerp: 0.1,
-  touchMultiplier: 1.15,
-  touchInertiaExponent: 1.6,
+  syncTouch: false,
   wheelMultiplier: 1,
   autoRaf: true,
-  allowNestedScroll: true,
   anchors: {
     offset: 88,
   },

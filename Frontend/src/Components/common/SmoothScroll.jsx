@@ -1,11 +1,29 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { ReactLenis } from "lenis/react";
-import { LENIS_OPTIONS } from "../../config/lenisOptions.js";
+import { DESKTOP_LENIS_OPTIONS } from "../../config/lenisOptions.js";
+import { isDesktopLenisContext } from "../../utils/scrollEnvironment.js";
 
-/** Root Lenis instance — smooth wheel + touch (mobile) sitewide. */
+/**
+ * Lenis only on desktop (fine pointer). Mobile uses native touch scroll —
+ * syncTouch causes lag/jerk on most phones.
+ */
 export default function SmoothScroll({ children }) {
+  const [enableLenis, setEnableLenis] = useState(() => isDesktopLenisContext());
+
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 768px) and (pointer: fine)");
+    const update = () => setEnableLenis(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
+
+  if (!enableLenis) {
+    return children;
+  }
+
   return (
-    <ReactLenis root options={LENIS_OPTIONS}>
+    <ReactLenis root options={DESKTOP_LENIS_OPTIONS}>
       {children}
     </ReactLenis>
   );
