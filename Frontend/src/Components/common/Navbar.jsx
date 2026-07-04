@@ -4,7 +4,52 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useLenis } from 'lenis/react';
 import { telHref } from '../../seo/business.js';
 
-const links = ['Home', 'About Us', 'Our Work', 'Insights', 'Contact Us'];
+const navItems = [
+  { label: "Home", to: "/" },
+  { label: "About Us", to: "/about-us" },
+  { label: "Our Work", to: "/our-work" },
+  { label: "Insights", to: "/insights" },
+  { label: "Courses We Offered", href: "https://bw-skills.vercel.app/" },
+  { label: "Contact Us", to: "/contact-us" },
+];
+
+const navLinkClass =
+  "relative group transition-colors duration-200 hover:text-[#C61407]";
+
+const NavItem = ({ item, className, onNavigate, showArrow }) => {
+  const content = (
+    <>
+      {item.label}
+      {showArrow ? (
+        <svg className="w-4 h-4 text-gray-300 group-hover:text-[#C61407] transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+        </svg>
+      ) : (
+        <span className="absolute -bottom-0.5 left-0 w-0 h-[1.5px] bg-[#C61407] rounded-full transition-all duration-300 group-hover:w-full" />
+      )}
+    </>
+  );
+
+  if (item.href) {
+    return (
+      <a
+        href={item.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={className}
+        onClick={onNavigate}
+      >
+        {content}
+      </a>
+    );
+  }
+
+  return (
+    <Link to={item.to} className={className} onClick={onNavigate}>
+      {content}
+    </Link>
+  );
+};
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
@@ -71,15 +116,8 @@ const Navbar = () => {
 
             {/* Desktop nav links */}
             <div className="hidden md:flex items-center gap-7 text-[15px] font-medium text-gray-500">
-              {links.map((link) => (
-                <Link
-                  key={link}
-                  to={`/${link.toLowerCase().replace(/\s+/g, '-')}`}
-                  className="relative group transition-colors duration-200 hover:text-[#C61407]"
-                >
-                  {link}
-                  <span className="absolute -bottom-0.5 left-0 w-0 h-[1.5px] bg-[#C61407] rounded-full transition-all duration-300 group-hover:w-full" />
-                </Link>
+              {navItems.map((item) => (
+                <NavItem key={item.label} item={item} className={navLinkClass} />
               ))}
             </div>
 
@@ -143,23 +181,19 @@ const Navbar = () => {
               }}
             >
               <div className="flex flex-col px-6 py-5 gap-1">
-                {links.map((link, i) => (
+                {navItems.map((item, i) => (
                   <motion.div
-                    key={link}
+                    key={item.label}
                     initial={{ opacity: 0, x: -12 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: i * 0.06, duration: 0.2 }}
-                    onClick={() => setOpen(false)}
                   >
-                    <Link
-                      to={`/${link.toLowerCase().replace(/\s+/g, '-')}`}
+                    <NavItem
+                      item={item}
                       className="flex items-center justify-between py-3 text-[15px] font-medium text-gray-700 hover:text-[#C61407] border-b border-gray-100 last:border-0 transition-colors group"
-                    >
-                      {link}
-                      <svg className="w-4 h-4 text-gray-300 group-hover:text-[#C61407] transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-                      </svg>
-                    </Link>
+                      onNavigate={() => setOpen(false)}
+                      showArrow
+                    />
                   </motion.div>
                 ))}
 

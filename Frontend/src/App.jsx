@@ -7,6 +7,7 @@ import Footer from "./Components/common/Footer";
 import BrandsWayLoader from "./Components/common/BrandsWayLoader";
 import ScrollToTop from "./Components/common/ScrollToTop";
 import SmoothScroll from "./Components/common/SmoothScroll";
+import CoursesLaunchPopup from "./Components/common/CoursesLaunchPopup";
 import TermsAndConditions from "./Components/common/TermsAndConditions";
 import PrivacyPolicy from "./Components/common/PrivacyPolicy";
 import BestWorkSection from "./Components/BestWork/BestWorkSection";
@@ -34,15 +35,17 @@ const App = () => {
       </AnimatePresence>
 
       {!loading && (
-        <LazyMotion features={domAnimation}>
-          <Suspense fallback={null}>
-            <Assistant />
-          </Suspense>
-          <SmoothScroll>
-            <Router>
-              <ScrollToTop />
-              <Navbar />
-              <Suspense fallback={<BrandsWayLoader />}>
+        <>
+          <CoursesLaunchPopup />
+          <LazyMotion features={domAnimation}>
+            <Suspense fallback={null}>
+              <Assistant />
+            </Suspense>
+            <SmoothScroll>
+              <Router>
+                <ScrollToTop />
+                <Navbar />
+                <Suspense fallback={<BrandsWayLoader />}>
                 <Routes>
                   <Route path="/" element={<Home />} />
                   <Route path="/home" element={<Home />} />
@@ -63,6 +66,7 @@ const App = () => {
             </Router>
           </SmoothScroll>
         </LazyMotion>
+        </>
       )}
     </div>
   );
