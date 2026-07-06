@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 import {
-  Code, PenTool, Layout, Share2, Search, Mail, Smartphone, CreditCard
+  Code, PenTool, Layout, Share2, Search, Mail, Smartphone, CreditCard, ArrowUpRight
 } from 'lucide-react';
 
 const services = [
@@ -92,11 +92,17 @@ const ServiceCard = ({ service, index }) => {
           </p>
         </div>
 
-        {/* Minimal corner accent */}
-        <div className="absolute bottom-5 right-5 sm:bottom-6 sm:right-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="text-white/60">
-            <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
+        {/* Click affordance — always visible */}
+        <div className="relative z-10 flex items-center justify-between pt-2 sm:pt-0">
+          <span className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-[#C61407]/80 transition-colors duration-300 group-hover:text-white/90">
+            Learn more
+          </span>
+          <div
+            className="flex h-9 w-9 sm:h-10 sm:w-10 shrink-0 items-center justify-center rounded-full border border-gray-200 bg-gray-50 text-[#C61407] transition-all duration-300 group-hover:border-white/30 group-hover:bg-white group-hover:text-[#C61407] group-hover:shadow-md"
+            aria-hidden
+          >
+            <ArrowUpRight size={18} strokeWidth={2.25} />
+          </div>
         </div>
       </div>
     </motion.div>
