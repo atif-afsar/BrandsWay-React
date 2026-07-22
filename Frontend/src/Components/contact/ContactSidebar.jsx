@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { MapPin, Mail, Phone, Calendar } from 'lucide-react';
-import { BUSINESS, telHref } from '../../seo/business.js';
+import { BUSINESS, telHref, addressLines, mapsEmbedSrc } from '../../seo/business.js';
 
 const ContactSidebar = () => {
   return (
@@ -19,7 +19,9 @@ const ContactSidebar = () => {
             <h4 className="font-bold text-sm">Studio</h4>
           </div>
           <p className="text-sm text-gray-500 leading-relaxed">
-            IT Plaza, Abdullah Road, Aligarh, Uttar Pradesh 202001
+            {addressLines().map((line) => (
+              <span key={line} className="block">{line}</span>
+            ))}
           </p>
         </div>
 
@@ -38,13 +40,14 @@ const ContactSidebar = () => {
       {/* Map Placeholder */}
       <div className="relative rounded-3xl overflow-hidden bg-gray-200 aspect-video lg:aspect-square flex-grow grayscale hover:grayscale-0 transition-all duration-700 border border-gray-100 shadow-sm">
         <iframe 
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3526.0585376007116!2d78.08514009999999!3d27.900176899999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3974a52680e74d87%3A0xae94127738614fe6!2sThe%20BrandsWay%20-%20Best%20PR%20%26%20Digital%20Marketing%20Company%20in%20Aligarh%20%7C%20Website%20Development%20%7C%20SEO%20%7C%20SMO%20%7C%20Ads%20Campaign!5e0!3m2!1sen!2sin!4v1772270542743!5m2!1sen!2sin" 
+          src={mapsEmbedSrc()} 
           width="100%" 
           height="100%" 
           style={{ border: 0 }} 
           allowFullScreen="" 
           loading="lazy" 
           referrerPolicy="no-referrer-when-downgrade"
+          title="The BrandsWay studio map — Grand Bazaar, Lal Diggi Road, Aligarh"
         />
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
           <div className="w-8 h-8 bg-[#C61407] rounded-full flex items-center justify-center text-white shadow-xl animate-bounce">

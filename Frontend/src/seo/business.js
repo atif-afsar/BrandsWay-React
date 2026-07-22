@@ -19,7 +19,7 @@ export const BUSINESS = {
   telephoneDisplay: "073029 88037",
   whatsappE164: "917302988037",
   address: {
-    streetAddress: "IT Plaza, Abdullah Road",
+    streetAddress: "Grand Bazaar, 1st Floor, Lal Diggi Road",
     addressLocality: "Aligarh",
     addressRegion: "Uttar Pradesh",
     postalCode: "202001",
@@ -75,6 +75,26 @@ export const GBP_ALIGNED_REVIEWS = [
 ];
 
 export const DEFAULT_OG_IMAGE = BUSINESS.image;
+
+/** Single-line address for NAP / CTAs */
+export const addressLine = () =>
+  `${BUSINESS.address.streetAddress}, ${BUSINESS.address.addressLocality}, ${BUSINESS.address.addressRegion} ${BUSINESS.address.postalCode}`;
+
+/** Multi-line display (contact / trust blocks) */
+export const addressLines = () => [
+  "Grand Bazaar",
+  "1st Floor",
+  "Lal Diggi Road",
+  `${BUSINESS.address.addressLocality}, ${BUSINESS.address.addressRegion} ${BUSINESS.address.postalCode}`,
+];
+
+/** Google Maps embed query for the studio */
+export const mapsEmbedSrc = () =>
+  "https://maps.google.com/maps?q=" +
+  encodeURIComponent(
+    `Grand Bazaar, 1st Floor, Lal Diggi Road, ${BUSINESS.address.addressLocality}, ${BUSINESS.address.addressRegion} ${BUSINESS.address.postalCode}, India`,
+  ) +
+  "&hl=en&z=16&output=embed";
 
 /** Dialable tel: URI */
 export const telHref = () => `tel:${BUSINESS.telephone.replace(/\s/g, "")}`;

@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Phone, Clock, MapPin, Star } from "lucide-react";
-import { BUSINESS, telHref } from "../../seo/business.js";
+import { BUSINESS, telHref, addressLines, mapsEmbedSrc } from "../../seo/business.js";
 
 /** Visible testimonials — copy aligns with optional Review JSON-LD on the homepage graph. */
 const TESTIMONIALS = [
@@ -24,10 +24,7 @@ const TESTIMONIALS = [
  * GBP support block: NAP, hours, map embed, call/WhatsApp CTAs, and review snippets.
  */
 const LocalTrustStrip = () => {
-  const mapSrc =
-    "https://maps.google.com/maps?q=" +
-    encodeURIComponent(`${BUSINESS.address.streetAddress}, ${BUSINESS.address.addressLocality}`) +
-    "&output=embed";
+  const mapSrc = mapsEmbedSrc();
 
   return (
     <section className="bg-[#050505] text-white py-16 sm:py-24 px-5 sm:px-8" aria-labelledby="local-trust-heading">
@@ -48,8 +45,9 @@ const LocalTrustStrip = () => {
               <span>
                 <strong className="text-white">{BUSINESS.name}</strong>
                 <br />
-                {BUSINESS.address.streetAddress}, {BUSINESS.address.addressLocality}, {BUSINESS.address.addressRegion}{" "}
-                {BUSINESS.address.postalCode}
+                {addressLines().map((line) => (
+                  <span key={line} className="block">{line}</span>
+                ))}
               </span>
             </p>
             <p className="flex items-center gap-3">

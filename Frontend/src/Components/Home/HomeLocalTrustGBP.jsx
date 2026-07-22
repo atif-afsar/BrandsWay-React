@@ -2,7 +2,7 @@ import React, { memo } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Phone, Clock, MapPin, MessageCircle, Star } from "lucide-react";
-import { BUSINESS, GBP_ALIGNED_REVIEWS, telHref, waHref } from "../../seo/business.js";
+import { BUSINESS, GBP_ALIGNED_REVIEWS, telHref, waHref, addressLines, mapsEmbedSrc } from "../../seo/business.js";
 
 /**
  * Google Business Profile–supporting block: NAP, hours, map, reviews, WhatsApp + tel CTAs.
@@ -10,8 +10,7 @@ import { BUSINESS, GBP_ALIGNED_REVIEWS, telHref, waHref } from "../../seo/busine
  */
 function HomeLocalTrustGBPComponent() {
   const wa = waHref();
-  const mapSrc =
-    "https://maps.google.com/maps?q=IT+Plaza%2C+Abdullah+Road%2C+Aligarh%2C+Uttar+Pradesh+202001%2C+India&hl=en&z=16&output=embed";
+  const mapSrc = mapsEmbedSrc();
 
   return (
     <section className="bg-white py-20 md:py-28 px-5 sm:px-8 border-t border-gray-100" aria-labelledby="local-trust-heading">
@@ -30,8 +29,9 @@ function HomeLocalTrustGBPComponent() {
               <p className="text-gray-700 flex gap-2 items-start">
                 <MapPin className="w-5 h-5 text-[#C61407] shrink-0 mt-0.5" aria-hidden />
                 <span>
-                  {BUSINESS.address.streetAddress}, {BUSINESS.address.addressLocality}, {BUSINESS.address.addressRegion}{" "}
-                  {BUSINESS.address.postalCode}, {BUSINESS.address.addressCountry}
+                  {addressLines().map((line) => (
+                    <span key={line} className="block">{line}</span>
+                  ))}
                 </span>
               </p>
               <p className="text-gray-600 flex gap-2 items-center mt-4">

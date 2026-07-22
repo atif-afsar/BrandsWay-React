@@ -37,7 +37,7 @@ const companyData = {
     phoneE164: "+917302988037",
     whatsapp: "917302988037",
     location: "Aligarh, Uttar Pradesh, India",
-    address: "IT Plaza, Abdullah Road, Aligarh, Uttar Pradesh 202001",
+    address: "Grand Bazaar, 1st Floor, Lal Diggi Road, Aligarh, Uttar Pradesh 202001",
     workingHours: "Monday - Saturday: 10:00 AM - 7:00 PM IST"
   },
   work: {
@@ -133,8 +133,8 @@ function getContextForAI(query) {
     context += `We're a creative agency helping businesses shine online with branding, web development, and digital marketing. `;
   }
 
-  if (lowerQuery.includes('contact') || lowerQuery.includes('email') || lowerQuery.includes('phone') || lowerQuery.includes('whatsapp') || lowerQuery.includes('reach')) {
-    context += `Reach us at ${companyData.contact.email}, call ${companyData.contact.phone}, or WhatsApp ${companyData.contact.phone}. Located in ${companyData.contact.location}. `;
+  if (lowerQuery.includes('contact') || lowerQuery.includes('email') || lowerQuery.includes('phone') || lowerQuery.includes('whatsapp') || lowerQuery.includes('reach') || lowerQuery.includes('address') || lowerQuery.includes('location') || lowerQuery.includes('where')) {
+    context += `Reach us at ${companyData.contact.email}, call ${companyData.contact.phone}, or WhatsApp ${companyData.contact.phone}. Our studio is at ${companyData.contact.address}. `;
   }
 
   if (lowerQuery.includes('work') || lowerQuery.includes('project') || lowerQuery.includes('portfolio')) {
