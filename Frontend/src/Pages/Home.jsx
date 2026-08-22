@@ -14,7 +14,8 @@ import {
 import { homePageFaqData } from "../data/homeFaq";
 import Hero from "../Components/Home/Hero";
 import ServicesSection from "../Components/Home/Services";
-const BestWorkSection = lazy(() => import("../Components/BestWork/BestWorkSection"));
+import SelectedWorkSection from "../Components/Home/SelectedWorkSection";
+import ReelMarqueeSection from "../Components/Home/ReelMarqueeSection";
 import ResultsSection from "../Components/Home/Results";
 import WhyChooseUs from "../Components/Home/WhyChooseUs";
 import FAQSection from "../Components/Home/FAQs";
@@ -27,9 +28,8 @@ import useInView from "../hooks/useInView";
 import useSmoothScrollTo from "../hooks/useSmoothScrollTo";
 
 const Home = () => {
-  const bestWorkRef = useRef(null);
-  const scrollToBestWork = useSmoothScrollTo();
-  const [bestWorkTriggerRef, bestWorkInView] = useInView();
+  const selectedWorkRef = useRef(null);
+  const scrollToSelectedWork = useSmoothScrollTo();
   const [localSeoRef, localSeoInView] = useInView();
   const [localTrustRef, localTrustInView] = useInView();
 
@@ -67,9 +67,11 @@ const Home = () => {
         keywords={HOME_META.keywords}
         jsonLd={[homeJsonLd]}
       />
-      <Hero onSeeImpactClick={() => scrollToBestWork(bestWorkRef)} />
+      <Hero onSeeImpactClick={() => scrollToSelectedWork(selectedWorkRef)} />
       <ServicesSection />
       <ScrollFillSection />
+      <ReelMarqueeSection />
+
       <ProcessSection />
       <div ref={localSeoRef}>
         {localSeoInView && (
@@ -78,21 +80,10 @@ const Home = () => {
           </Suspense>
         )}
       </div>
-      <div id="bestwork" ref={bestWorkRef}>
-        <div ref={bestWorkTriggerRef}>
-          {bestWorkInView && (
-            <Suspense
-              fallback={
-                <div className="h-64 bg-gray-100 animate-pulse flex items-center justify-center" aria-busy="true">
-                  Loading...
-                </div>
-              }
-            >
-              <BestWorkSection />
-            </Suspense>
-          )}
-        </div>
+      <div id="selected-work" ref={selectedWorkRef}>
+        <SelectedWorkSection id="selected-work-section" />
       </div>
+      {/* Infinite Reel Marquee Showcase */}
       <ResultsSection />
       <WhyChooseUs />
       <div ref={localTrustRef}>

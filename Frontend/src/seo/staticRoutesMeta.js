@@ -16,12 +16,12 @@ export const CONTACT_SEO = {
   canonicalPath: "/contact-us",
 };
 
-export const OUR_WORK_SEO = {
-  title: "Our Work | Campaigns & Creative by The BrandsWay Aligarh",
+export const PORTFOLIO_SEO = {
+  title: "Portfolio | The BrandsWay",
   description:
-    "Explore campaigns, creative, and performance work from The BrandsWay — a premium digital marketing and PR agency serving brands in Aligarh and beyond.",
-  keywords: "The BrandsWay portfolio, marketing case studies Aligarh, creative agency work",
-  canonicalPath: "/our-work",
+    "Explore selected websites, branding, graphics, marketing campaigns, and digital work by The BrandsWay.",
+  keywords: "The BrandsWay portfolio, digital marketing case studies, branding agency work, web design portfolio Aligarh",
+  canonicalPath: "/portfolio",
 };
 
 export const INSIGHTS_SEO = {

@@ -28,6 +28,16 @@ html {
   animation: spin-slow 4s linear infinite;
 }
 
+/* Infinite Marquee Animation for Reel Showcase */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 35s linear infinite;
+}
+
 /* Mobile: scroll attachment improves LCP/INP vs fixed hero backgrounds (Core Web Vitals). */
 .hero-bg-attach {
   background-attachment: scroll;

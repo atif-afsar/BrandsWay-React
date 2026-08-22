@@ -1,131 +1,212 @@
 import React, { memo } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { MapPin, Building2, Sparkles } from "lucide-react";
 
 /**
- * Location + intent-rich homepage blocks — supports Aligarh local queries without keyword stuffing.
- * Semantic H2/H3 hierarchy for crawlers; internal links to programmatic landing URLs.
+ * Location + intent-rich homepage section redesigned in The BrandsWay premium editorial aesthetic.
+ * Preserves all programmatic SEO links and structured hierarchy.
  */
 function HomeLocalGrowthComponent() {
-  const fade = { initial: { opacity: 0, y: 18 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true, amount: 0.2 } };
+  const fade = {
+    initial: { opacity: 0, y: 20 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true, amount: 0.2 },
+    transition: { duration: 0.6 }
+  };
 
   return (
-    <section className="bg-[#fafafa] py-20 md:py-28 px-5 sm:px-8" aria-labelledby="local-growth-heading">
-      <div className="max-w-6xl mx-auto space-y-20">
-        <header className="text-center max-w-3xl mx-auto">
-          <p className="text-[10px] font-black uppercase tracking-[0.35em] text-[#C61407] mb-4">Aligarh · Uttar Pradesh</p>
-          <h2 id="local-growth-heading" className="text-3xl sm:text-5xl font-bold text-[#080C12] tracking-tight leading-tight mb-6">
-            Why businesses across Aligarh choose The BrandsWay
-          </h2>
-          <p className="text-gray-600 text-lg leading-relaxed">
-            Whether you are building a local retail name, scaling an education brand, or growing a services company, buyers compare you on Google, Instagram, and Maps before they call. We help you show up with clarity—and prove what worked.
-          </p>
-        </header>
-
-        <motion.article {...fade} transition={{ duration: 0.45 }} className="grid md:grid-cols-2 gap-10 items-start">
-          <div className="rounded-3xl bg-white border border-gray-100 p-8 shadow-sm">
-            <Building2 className="w-10 h-10 text-[#C61407] mb-4" aria-hidden />
-            <h3 className="text-2xl font-bold text-[#080C12] mb-4">Businesses we help in Aligarh</h3>
-            <p className="text-gray-600 leading-relaxed mb-4">
-              We work with founders and marketing teams who want a serious partner for performance: retail, healthcare, education, events, manufacturing partners, and professional services. If your customers search online first, we build the funnel around that reality.
-            </p>
-            <p className="text-gray-600 leading-relaxed">
-              From{" "}
-              <Link to="/seo-company-aligarh" className="text-[#C61407] font-semibold hover:underline">
-                SEO that matches how people search in Aligarh
-              </Link>{" "}
-              to{" "}
-              <Link to="/google-ads-agency-aligarh" className="text-[#C61407] font-semibold hover:underline">
-                Google Ads
-              </Link>{" "}
-              and{" "}
-              <Link to="/social-media-marketing-aligarh" className="text-[#C61407] font-semibold hover:underline">
-                social media marketing
-              </Link>
-              , we connect channels so budgets reinforce each other.
-            </p>
+    <section
+      className="w-full bg-[#fdf8f8] py-28 px-6 sm:px-12 lg:px-20 font-['Geist',_sans-serif] text-black border-t border-black/10"
+      aria-labelledby="local-growth-heading"
+    >
+      <div className="max-w-7xl mx-auto flex flex-col gap-24">
+        
+        {/* Section Header */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 border-b border-black/10 pb-16">
+          <div className="max-w-3xl">
+            <motion.div {...fade} className="flex items-center gap-2 mb-4">
+              <span className="w-2 h-2 rounded-full bg-[#C61407]" />
+              <span className="text-xs font-semibold uppercase tracking-[0.25em] text-[#C61407]">
+                ALIGARH · UTTAR PRADESH
+              </span>
+            </motion.div>
+            
+            <motion.h2
+              id="local-growth-heading"
+              {...fade}
+              className="font-['Syne',_sans-serif] text-4xl sm:text-6xl md:text-7xl font-light tracking-tight text-black leading-[1.05]"
+            >
+              Why ambitious brands choose <br />
+              <span className="font-bold text-[#C61407]">The BrandsWay.</span>
+            </motion.h2>
           </div>
-          <div className="rounded-3xl bg-[#080C12] text-white p-8 shadow-xl">
-            <Sparkles className="w-10 h-10 text-[#C61407] mb-4" aria-hidden />
-            <h3 className="text-2xl font-bold mb-4">Aligarh-focused marketing solutions</h3>
-            <p className="text-gray-300 leading-relaxed mb-6">
-              Local growth is not “small budget marketing.” It is precision: the right message, the right radius, the right proof, and reporting your leadership can trust. We design campaigns for Aligarh buyers first—then scale when you expand across Uttar Pradesh.
-            </p>
-            <ul className="space-y-3 text-sm text-gray-400">
-              <li className="flex gap-2">
-                <MapPin className="w-4 h-4 text-[#C61407] shrink-0 mt-0.5" aria-hidden />
-                <span>Service-area strategy, call tracking hygiene, and landing pages aligned to intent.</span>
-              </li>
-              <li className="flex gap-2">
-                <MapPin className="w-4 h-4 text-[#C61407] shrink-0 mt-0.5" aria-hidden />
-                <span>
-                  Explore our{" "}
-                  <Link to="/digital-marketing-agency-aligarh" className="text-white font-semibold hover:text-[#C61407]">
-                    digital marketing agency in Aligarh
-                  </Link>{" "}
-                  playbook.
-                </span>
-              </li>
-            </ul>
-          </div>
-        </motion.article>
 
-        <motion.article {...fade} transition={{ duration: 0.45, delay: 0.05 }} className="rounded-[2rem] border border-gray-200 bg-white p-8 sm:p-12">
-          <h3 className="text-2xl sm:text-3xl font-bold text-[#080C12] mb-6">Why The BrandsWay is a strong choice for local businesses in Aligarh</h3>
-          <div className="grid sm:grid-cols-3 gap-8 text-gray-600 leading-relaxed text-sm sm:text-base">
+          <motion.p {...fade} className="text-gray-600 text-base md:text-lg max-w-md leading-relaxed">
+            Whether you are building a local retail flagship, scaling an education institution, or expanding services across UP — buyers compare you on Google, Instagram, and Maps before they call.
+          </motion.p>
+        </div>
+
+        {/* Asymmetric 2-Column Editorial Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12 items-stretch">
+          
+          {/* Card 1: Businesses We Help */}
+          <motion.article
+            {...fade}
+            className="md:col-span-6 bg-white/60 backdrop-blur-sm border border-black/10 rounded-2xl p-8 sm:p-12 flex flex-col justify-between hover:border-black/30 transition-colors group"
+          >
             <div>
-              <p className="font-bold text-[#080C12] mb-2">Results-driven marketing</p>
-              <p>
-                We prioritize pipeline and revenue signals—not vanity metrics. That discipline is what teams expect from a top{" "}
-                <Link to="/digital-marketing-agency-aligarh" className="text-[#C61407] font-semibold hover:underline">
+              <span className="text-xs font-mono text-gray-400 uppercase tracking-widest block mb-4">
+                01 / TARGETED GROWTH
+              </span>
+              <h3 className="font-['Syne',_sans-serif] text-2xl sm:text-3xl font-bold uppercase text-black mb-6 group-hover:text-[#C61407] transition-colors">
+                Businesses we help in Aligarh
+              </h3>
+              <p className="text-gray-600 text-sm sm:text-base leading-relaxed mb-6">
+                We work with founders and marketing teams who demand a serious partner for performance: retail, healthcare, education, events, manufacturing, and professional services. If your customers search online first, we build the funnel around that reality.
+              </p>
+              <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
+                From{" "}
+                <Link to="/seo-company-aligarh" className="font-semibold text-black underline underline-offset-4 hover:text-[#C61407] transition-colors">
+                  SEO tailored to Aligarh search intent
+                </Link>{" "}
+                to targeted{" "}
+                <Link to="/google-ads-agency-aligarh" className="font-semibold text-black underline underline-offset-4 hover:text-[#C61407] transition-colors">
+                  Google Ads campaigns
+                </Link>{" "}
+                and high-converting{" "}
+                <Link to="/social-media-marketing-aligarh" className="font-semibold text-black underline underline-offset-4 hover:text-[#C61407] transition-colors">
+                  social media marketing
+                </Link>
+                , we synchronize digital channels so budgets reinforce each other.
+              </p>
+            </div>
+            
+            <div className="mt-10 pt-6 border-t border-black/5 flex items-center justify-between text-xs font-bold uppercase tracking-wider text-black group-hover:text-[#C61407] transition-colors">
+              <span>LOCAL PERFORMANCE FUNNELS</span>
+              <span className="material-symbols-outlined text-sm">north_east</span>
+            </div>
+          </motion.article>
+
+          {/* Card 2: Aligarh-Focused Solutions */}
+          <motion.article
+            {...fade}
+            className="md:col-span-6 bg-black text-white rounded-2xl p-8 sm:p-12 flex flex-col justify-between shadow-2xl relative overflow-hidden group"
+          >
+            <div className="relative z-10">
+              <span className="text-xs font-mono text-[#C61407] uppercase tracking-widest block mb-4 font-semibold">
+                02 / PRECISION STRATEGY
+              </span>
+              <h3 className="font-['Syne',_sans-serif] text-2xl sm:text-3xl font-bold uppercase text-white mb-6 group-hover:text-[#C61407] transition-colors">
+                Aligarh-focused marketing solutions
+              </h3>
+              <p className="text-gray-300 text-sm sm:text-base leading-relaxed mb-6">
+                Local growth is not “small budget marketing.” It is precision: the right message, the right radius, the right proof, and reporting leadership can trust. We design campaigns for Aligarh buyers first — then scale as you expand across Uttar Pradesh.
+              </p>
+              <ul className="space-y-4 text-sm text-gray-400">
+                <li className="flex items-start gap-3">
+                  <span className="material-symbols-outlined text-sm text-[#C61407] mt-0.5">check_circle</span>
+                  <span>Service-area strategy, call tracking hygiene, and landing pages aligned strictly to intent.</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="material-symbols-outlined text-sm text-[#C61407] mt-0.5">check_circle</span>
+                  <span>
+                    Explore our comprehensive{" "}
+                    <Link to="/digital-marketing-agency-aligarh" className="text-white font-semibold underline underline-offset-4 hover:text-[#C61407] transition-colors">
+                      digital marketing agency in Aligarh
+                    </Link>{" "}
+                    playbook.
+                  </span>
+                </li>
+              </ul>
+            </div>
+
+            <div className="mt-10 pt-6 border-t border-white/10 flex items-center justify-between text-xs font-bold uppercase tracking-wider text-white group-hover:text-[#C61407] transition-colors relative z-10">
+              <span>SCALABLE REGIONAL CAMPAIGNS</span>
+              <span className="material-symbols-outlined text-sm">north_east</span>
+            </div>
+          </motion.article>
+
+        </div>
+
+        {/* 3-Column Pillar System */}
+        <motion.div {...fade} className="bg-white/60 backdrop-blur-sm border border-black/10 rounded-2xl p-8 sm:p-14">
+          <div className="mb-10">
+            <span className="text-xs font-mono text-gray-400 uppercase tracking-widest block mb-2">
+              03 / THE BRANDSWAY DIFFERENCE
+            </span>
+            <h3 className="font-['Syne',_sans-serif] text-3xl sm:text-4xl font-bold uppercase text-black">
+              Why The BrandsWay is a strong choice in Aligarh
+            </h3>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 text-gray-600 leading-relaxed text-sm sm:text-base">
+            
+            <div className="flex flex-col gap-3">
+              <span className="text-xs font-mono font-bold text-[#C61407] uppercase tracking-wider">PILLAR 01</span>
+              <h4 className="font-['Syne',_sans-serif] text-xl font-bold uppercase text-black">Results-Driven Marketing</h4>
+              <p className="text-sm text-gray-600 leading-relaxed">
+                We prioritize pipeline and revenue signals — not vanity metrics. That discipline is what teams expect from a premier{" "}
+                <Link to="/digital-marketing-agency-aligarh" className="font-semibold text-black underline underline-offset-4 hover:text-[#C61407] transition-colors">
                   marketing company in Aligarh
                 </Link>
                 .
               </p>
             </div>
-            <div>
-              <p className="font-bold text-[#080C12] mb-2">Industries we serve</p>
-              <p>
+
+            <div className="flex flex-col gap-3">
+              <span className="text-xs font-mono font-bold text-[#C61407] uppercase tracking-wider">PILLAR 02</span>
+              <h4 className="font-['Syne',_sans-serif] text-xl font-bold uppercase text-black">Industries We Serve</h4>
+              <p className="text-sm text-gray-600 leading-relaxed">
                 Retail, education, healthcare, hospitality, events, creators, and B2B suppliers. If you need a{" "}
-                <Link to="/website-development-company-aligarh" className="text-[#C61407] font-semibold hover:underline">
+                <Link to="/website-development-company-aligarh" className="font-semibold text-black underline underline-offset-4 hover:text-[#C61407] transition-colors">
                   website development company in Aligarh
                 </Link>
                 , we ship fast, accessible builds.
               </p>
             </div>
-            <div>
-              <p className="font-bold text-[#080C12] mb-2">Trust and execution</p>
-              <p>
-                From{" "}
-                <Link to="/branding-agency-aligarh" className="text-[#C61407] font-semibold hover:underline">
+
+            <div className="flex flex-col gap-3">
+              <span className="text-xs font-mono font-bold text-[#C61407] uppercase tracking-wider">PILLAR 03</span>
+              <h4 className="font-['Syne',_sans-serif] text-xl font-bold uppercase text-black">Trust & Execution</h4>
+              <p className="text-sm text-gray-600 leading-relaxed">
+                From brand strategy and{" "}
+                <Link to="/branding-agency-aligarh" className="font-semibold text-black underline underline-offset-4 hover:text-[#C61407] transition-colors">
                   branding
                 </Link>{" "}
-                to{" "}
-                <Link to="/pr-agency-aligarh" className="text-[#C61407] font-semibold hover:underline">
-                  PR
+                to corporate{" "}
+                <Link to="/pr-agency-aligarh" className="font-semibold text-black underline underline-offset-4 hover:text-[#C61407] transition-colors">
+                  PR campaigns
                 </Link>
-                , we keep messaging consistent so customers recognize you everywhere.
+                , we keep messaging consistent so customers recognize your brand everywhere.
               </p>
             </div>
-          </div>
-        </motion.article>
 
-        <motion.aside {...fade} transition={{ duration: 0.45, delay: 0.1 }} className="text-center">
-          <p className="text-gray-500 max-w-2xl mx-auto mb-6">
-            Want practical local playbooks? Read our{" "}
-            <Link to="/insights" className="text-[#C61407] font-semibold hover:underline">
+          </div>
+        </motion.div>
+
+        {/* Section Footer Call to Action */}
+        <motion.div {...fade} className="flex flex-col sm:flex-row items-center justify-between gap-6 pt-6 border-t border-black/10">
+          <p className="text-gray-600 text-sm sm:text-base max-w-xl">
+            Want practical local growth playbooks? Explore our{" "}
+            <Link to="/insights" className="font-bold text-black underline underline-offset-4 hover:text-[#C61407] transition-colors">
               growth journal
             </Link>{" "}
-            for long-tail guides on SEO, ads, and social—written for busy operators.
+            for in-depth guides on SEO, ads, and social media.
           </p>
+
           <Link
             to="/contact-us"
-            className="inline-flex items-center justify-center rounded-full bg-[#C61407] text-white px-8 py-3 text-sm font-bold uppercase tracking-widest hover:bg-red-800 transition-colors"
+            className="group inline-flex items-center gap-2 border-b-2 border-black pb-1.5 transition-colors hover:border-[#C61407] flex-shrink-0"
           >
-            Book a strategy call
+            <span className="text-sm font-bold uppercase tracking-wider text-black group-hover:text-[#C61407] transition-colors">
+              Book a Strategy Call
+            </span>
+            <span className="material-symbols-outlined text-base text-black group-hover:text-[#C61407] transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1">
+              arrow_outward
+            </span>
           </Link>
-        </motion.aside>
+        </motion.div>
+
       </div>
     </section>
   );

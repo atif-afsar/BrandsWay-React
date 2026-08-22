@@ -5,7 +5,7 @@
 export const STATIC_SITEMAP_PATHS = [
   "/",
   "/about-us",
-  "/our-work",
+  "/portfolio",
   "/insights",
   "/contact-us",
   "/privacy-policy",

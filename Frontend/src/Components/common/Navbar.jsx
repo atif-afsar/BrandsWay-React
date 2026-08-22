@@ -4,10 +4,12 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useLenis } from 'lenis/react';
 import { telHref } from '../../seo/business.js';
 
+import { useLocation } from 'react-router-dom';
+
 const navItems = [
   { label: "Home", to: "/" },
   { label: "About Us", to: "/about-us" },
-  { label: "Our Work", to: "/our-work" },
+  { label: "Portfolio", to: "/portfolio" },
   { label: "Insights", to: "/insights" },
   { label: "Courses We Offered", href: "https://bw-skills.vercel.app/" },
   { label: "Contact Us", to: "/contact-us" },
@@ -16,16 +18,16 @@ const navItems = [
 const navLinkClass =
   "relative group transition-colors duration-200 hover:text-[#C61407]";
 
-const NavItem = ({ item, className, onNavigate, showArrow }) => {
+const NavItem = ({ item, className, onNavigate, showArrow, active }) => {
   const content = (
     <>
-      {item.label}
+      <span className={active ? "text-[#C61407] font-semibold" : ""}>{item.label}</span>
       {showArrow ? (
-        <svg className="w-4 h-4 text-gray-300 group-hover:text-[#C61407] transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+        <svg className={`w-4 h-4 transition-colors ${active ? "text-[#C61407]" : "text-gray-300 group-hover:text-[#C61407]"}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
         </svg>
       ) : (
-        <span className="absolute -bottom-0.5 left-0 w-0 h-[1.5px] bg-[#C61407] rounded-full transition-all duration-300 group-hover:w-full" />
+        <span className={`absolute -bottom-0.5 left-0 h-[1.5px] bg-[#C61407] rounded-full transition-all duration-300 ${active ? "w-full" : "w-0 group-hover:w-full"}`} />
       )}
     </>
   );
@@ -45,7 +47,7 @@ const NavItem = ({ item, className, onNavigate, showArrow }) => {
   }
 
   return (
-    <Link to={item.to} className={className} onClick={onNavigate}>
+    <Link to={item.to} className={`${className} ${active ? "text-[#C61407]" : ""}`} onClick={onNavigate}>
       {content}
     </Link>
   );
@@ -55,6 +57,7 @@ const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const lenis = useLenis();
+  const location = useLocation();
 
   useEffect(() => {
     if (lenis) {
@@ -117,7 +120,12 @@ const Navbar = () => {
             {/* Desktop nav links */}
             <div className="hidden md:flex items-center gap-7 text-[15px] font-medium text-gray-500">
               {navItems.map((item) => (
-                <NavItem key={item.label} item={item} className={navLinkClass} />
+                <NavItem
+                  key={item.label}
+                  item={item}
+                  className={navLinkClass}
+                  active={item.to ? location.pathname === item.to : false}
+                />
               ))}
             </div>
 
@@ -132,7 +140,7 @@ const Navbar = () => {
                 src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix"
                 className="w-5 h-5 rounded-full bg-white/20"
                 alt="BrandsWay Discovery Call Avatar"
-                fetchpriority="high"
+                fetchPriority="high"
                 sizes="20px"
               />
               Book a Discovery Call
@@ -193,6 +201,7 @@ const Navbar = () => {
                       className="flex items-center justify-between py-3 text-[15px] font-medium text-gray-700 hover:text-[#C61407] border-b border-gray-100 last:border-0 transition-colors group"
                       onNavigate={() => setOpen(false)}
                       showArrow
+                      active={item.to ? location.pathname === item.to : false}
                     />
                   </motion.div>
                 ))}
@@ -209,7 +218,7 @@ const Navbar = () => {
                     src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix"
                     className="w-6 h-6 rounded-full bg-white/20"
                     alt="avatar"
-                    fetchpriority="high"
+                    fetchPriority="high"
                     sizes="24px"
                   />
                    Book a Discovery Call

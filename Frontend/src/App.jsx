@@ -1,5 +1,5 @@
 import React, { useState, lazy, Suspense } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import { AnimatePresence, LazyMotion, domAnimation } from "framer-motion";
 import { LANDING_PAGE_ORDER } from "./data/landingPages.data";
 import Navbar from "./Components/common/Navbar";
@@ -10,11 +10,10 @@ import SmoothScroll from "./Components/common/SmoothScroll";
 import CoursesLaunchPopup from "./Components/common/CoursesLaunchPopup";
 import TermsAndConditions from "./Components/common/TermsAndConditions";
 import PrivacyPolicy from "./Components/common/PrivacyPolicy";
-import BestWorkSection from "./Components/BestWork/BestWorkSection";
 
 const Home = lazy(() => import("./Pages/Home"));
 const About = lazy(() => import("./Pages/About"));
-const OurWork = lazy(() => import("./Pages/OurWork"));
+const Portfolio = lazy(() => import("./Pages/Portfolio"));
 const Insights = lazy(() => import("./Pages/Insights"));
 const BlogDetail = lazy(() => import("./Pages/BlogDetail"));
 const Contact = lazy(() => import("./Pages/Contact"));
@@ -50,7 +49,8 @@ const App = () => {
                   <Route path="/" element={<Home />} />
                   <Route path="/home" element={<Home />} />
                   <Route path="/about-us" element={<About />} />
-                  <Route path="/our-work" element={<OurWork />} />
+                  <Route path="/portfolio" element={<Portfolio />} />
+                  <Route path="/our-work" element={<Navigate to="/portfolio" replace />} />
                   <Route path="/insights" element={<Insights />} />
                   <Route path="/blog/:slug" element={<BlogDetail />} />
                   <Route path="/contact-us" element={<Contact />} />
@@ -59,7 +59,6 @@ const App = () => {
                   ))}
                   <Route path="/privacy-policy" element={<PrivacyPolicy />} />
                   <Route path="/terms-and-condition" element={<TermsAndConditions />} />
-                  <Route path="/bestWork" element={<BestWorkSection />} />
                 </Routes>
               </Suspense>
               <Footer />
