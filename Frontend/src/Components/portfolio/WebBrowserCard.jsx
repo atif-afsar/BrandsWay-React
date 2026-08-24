@@ -42,6 +42,7 @@ export default function WebBrowserCard({ project, className = "" }) {
           src={project.visual}
           alt={`Screenshot of ${project.title} website`}
           loading="lazy"
+          decoding="async"
           className="w-full h-auto object-cover object-top transition-transform duration-700 ease-out group-hover/browser:scale-[1.015]"
         />
       </div>

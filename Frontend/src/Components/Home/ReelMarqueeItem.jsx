@@ -1,10 +1,40 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 
 export default function ReelMarqueeItem({ reel }) {
   const [isLoading, setIsLoading] = useState(true);
   const [isMuted, setIsMuted] = useState(true);
   const [isPlaying, setIsPlaying] = useState(true);
+  const [isInView, setIsInView] = useState(false);
+  const containerRef = useRef(null);
   const videoRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsInView(entry.isIntersecting);
+      },
+      { rootMargin: "150px 0px", threshold: 0.1 }
+    );
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!videoRef.current || !reel.videoUrl) return;
+
+    if (isInView && isPlaying) {
+      const playPromise = videoRef.current.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {});
+      }
+    } else {
+      videoRef.current.pause();
+    }
+  }, [isInView, isPlaying, reel.videoUrl]);
 
   const togglePlay = (e) => {
     e.stopPropagation();
@@ -26,7 +56,7 @@ export default function ReelMarqueeItem({ reel }) {
   };
 
   return (
-    <div className="relative flex-shrink-0 w-60 sm:w-72 md:w-80 aspect-[9/16] rounded-2xl overflow-hidden bg-black border border-white/10 shadow-2xl group select-none">
+    <div ref={containerRef} className="relative flex-shrink-0 w-60 sm:w-72 md:w-80 aspect-[9/16] rounded-2xl overflow-hidden bg-black border border-white/10 shadow-2xl group select-none">
       
       {/* Minimal Loader Skeleton */}
       {isLoading && (
@@ -41,8 +71,8 @@ export default function ReelMarqueeItem({ reel }) {
       {/* Direct Native Video Element */}
       <video
         ref={videoRef}
-        src={reel.videoUrl}
-        autoPlay
+        src={isInView ? reel.videoUrl : undefined}
+        preload={isInView ? "metadata" : "none"}
         muted={isMuted}
         loop
         playsInline
@@ -94,3 +124,4 @@ export default function ReelMarqueeItem({ reel }) {
     </div>
   );
 }
+

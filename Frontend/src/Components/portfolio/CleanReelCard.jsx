@@ -1,11 +1,43 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 
 export default function CleanReelCard({ reel }) {
   const [isLoading, setIsLoading] = useState(true);
   const [isMuted, setIsMuted] = useState(true);
+  const [isInView, setIsInView] = useState(false);
+  const containerRef = useRef(null);
   const videoRef = useRef(null);
 
   const embedUrl = reel.embedUrl || (reel.reelId ? `https://www.instagram.com/reel/${reel.reelId}/embed/` : null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsInView(entry.isIntersecting);
+      },
+      { rootMargin: "150px 0px", threshold: 0.1 }
+    );
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!videoRef.current || !reel.videoUrl) return;
+
+    if (isInView) {
+      const playPromise = videoRef.current.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {
+          // Autoplay was prevented or interrupted safely
+        });
+      }
+    } else {
+      videoRef.current.pause();
+    }
+  }, [isInView, reel.videoUrl]);
 
   const toggleMute = () => {
     if (!videoRef.current) return;
@@ -14,7 +46,7 @@ export default function CleanReelCard({ reel }) {
   };
 
   return (
-    <div className="flex flex-col group">
+    <div ref={containerRef} className="flex flex-col group">
       {/* 9:16 Pure Video Frame */}
       <div className="relative w-full aspect-[9/16] rounded-2xl overflow-hidden bg-black border border-black/10 shadow-md group-hover:shadow-2xl transition-all duration-500">
         
@@ -32,8 +64,8 @@ export default function CleanReelCard({ reel }) {
           <>
             <video
               ref={videoRef}
-              src={reel.videoUrl}
-              autoPlay
+              src={isInView ? reel.videoUrl : undefined}
+              preload={isInView ? "metadata" : "none"}
               muted={isMuted}
               loop
               playsInline
@@ -56,19 +88,27 @@ export default function CleanReelCard({ reel }) {
           </>
         ) : embedUrl ? (
           <div className="absolute inset-0 w-full h-full overflow-hidden bg-black flex items-center justify-center">
-            <iframe
-              src={embedUrl}
-              title={reel.title || "Instagram Reel"}
-              className="w-[106%] h-[152%] -mt-[16%] -ml-[3%] border-0 object-cover scale-[1.15] origin-center pointer-events-auto"
-              allowFullScreen
-              scrolling="no"
-              allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-            />
+            {isInView ? (
+              <iframe
+                src={embedUrl}
+                title={reel.title || "Instagram Reel"}
+                className="w-[106%] h-[152%] -mt-[16%] -ml-[3%] border-0 object-cover scale-[1.15] origin-center pointer-events-auto"
+                allowFullScreen
+                scrolling="no"
+                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+              />
+            ) : (
+              <div className="w-full h-full bg-gray-900 animate-pulse flex items-center justify-center">
+                <span className="text-[10px] font-mono text-gray-500 uppercase tracking-widest">Loading...</span>
+              </div>
+            )}
           </div>
         ) : (
           <img
             src={reel.thumbnail}
             alt={reel.title}
+            loading="lazy"
+            decoding="async"
             className="w-full h-full object-cover"
           />
         )}
@@ -89,3 +129,4 @@ export default function CleanReelCard({ reel }) {
     </div>
   );
 }
+

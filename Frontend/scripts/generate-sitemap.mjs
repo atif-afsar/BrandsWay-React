@@ -2,7 +2,7 @@
  * Post-build sitemap generator — keeps public/sitemap.xml aligned with routes + blog slugs.
  * Run via: npm run build (see package.json postbuild hook).
  */
-import { writeFileSync } from "fs";
+import { writeFileSync, copyFileSync, existsSync } from "fs";
 import { dirname, join } from "path";
 import { fileURLToPath } from "url";
 import { STATIC_SITEMAP_PATHS, BLOG_SLUGS } from "../src/seo/sitemap-paths.js";
@@ -42,3 +42,18 @@ ${entries
 
 writeFileSync(outFile, xml, "utf8");
 console.log(`[sitemap] wrote ${entries.length} URLs to public/sitemap.xml`);
+
+// Ensure GoDaddy server config files (.htaccess & web.config) are copied into dist/
+const distDir = join(__dirname, "..", "dist");
+if (existsSync(distDir)) {
+  const htaccessSrc = join(__dirname, "..", "public", ".htaccess");
+  const webConfigSrc = join(__dirname, "..", "public", "web.config");
+  if (existsSync(htaccessSrc)) {
+    copyFileSync(htaccessSrc, join(distDir, ".htaccess"));
+  }
+  if (existsSync(webConfigSrc)) {
+    copyFileSync(webConfigSrc, join(distDir, "web.config"));
+  }
+  console.log("[build] copied .htaccess & web.config to dist/");
+}
+
